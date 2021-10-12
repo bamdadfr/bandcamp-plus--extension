@@ -1,0 +1,47 @@
+{
+    "name": "bandcamp-plus--extension",
+    "version": "0.0.0",
+    "description": "Add multiple features to bandcamp.com",
+    "license": "MIT",
+    "author": {
+        "url": "https://bamdad.fr",
+        "name": "Bamdad Sabbagh",
+        "email": "hi@bamdad.fr"
+    },
+    "scripts": {
+        "build": "yarn clean && yarn build:webpack && yarn build:ext",
+        "build:clean": "rimraf packages",
+        "build:ext": "web-ext build --source-dir dist",
+        "build:prepare": "./bin/prepare.sh",
+        "build:webpack": "NODE_ENV=production webpack",
+        "clean": "yarn dev:clean && yarn build:clean",
+        "dev:chrome": "yarn dev:clean && concurrently 'yarn dev:webpack' 'wait-on dist/manifest.json && yarn dev:ext:chrome'",
+        "dev:clean": "rimraf dist",
+        "dev:ext:chrome": "web-ext run -t chromium",
+        "dev:ext:firefox": "web-ext run",
+        "dev:firefox": "yarn dev:clean && concurrently 'yarn dev:webpack' 'wait-on dist/manifest.json && yarn dev:ext:firefox'",
+        "dev:webpack": "webpack",
+        "lint": "eslint src --ext .js --fix",
+        "package:reinstall": "rimraf node_modules && yarn",
+        "package:sort": "npx sort-package-json"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@babel/core": "^7.14.6",
+        "@babel/plugin-transform-runtime": "^7.14.5",
+        "@babel/preset-env": "^7.14.7",
+        "@bamdadsabbagh/eslint-config": "^1.14.0",
+        "babel-loader": "^8.2.2",
+        "concurrently": "^6.0.0",
+        "copy-webpack-plugin": "^9.0.0",
+        "rimraf": "^3.0.2",
+        "wait-on": "^6.0.0",
+        "web-ext": "^6.1.0",
+        "webpack": "^5.50.0",
+        "webpack-cli": "^4.7.2"
+    },
+    "webExt": {
+        "sourceDir": "dist",
+        "artifactsDir": "packages"
+    }
+}

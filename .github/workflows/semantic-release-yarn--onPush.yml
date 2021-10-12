@@ -1,0 +1,43 @@
+name: semantic-release-yarn-with-build--onPush
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  semantic-release-yarn-with-build--onMondays-1030:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-node@master
+        with:
+          node-version: '14'
+
+      - run: yarn
+
+      - run: yarn build
+
+      - run: |
+          npm install -g \
+            semantic-release \
+            @semantic-release/github \
+            @semantic-release/git \
+            @semantic-release/exec \
+            @semantic-release/changelog \
+            @semantic-release/npm \
+            semantic-release-chrome \
+            semantic-release-firefox-add-on \
+            aggregate-error@3.1.0
+
+      - run: semantic-release
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          FIREFOX_API_KEY: ${{ secrets.FIREFOX_API_KEY }}
+          FIREFOX_SECRET_KEY: ${{ secrets.FIREFOX_SECRET_KEY }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
