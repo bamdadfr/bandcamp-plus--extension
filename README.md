@@ -4,7 +4,7 @@
     <a href="https://addons.mozilla.org/en-US/firefox/addon/bandcamp-plus">
         <img
             width=100
-            src="https://raw.githubusercontent.com/bamdadsabbagh/screwmycode-in--www/master/assets/icons/bandcamp-plus-icon.svg"
+            src="https://raw.githubusercontent.com/bamdadsabbagh/bandcamp-plus--extension/master/assets/icons/bandcamp-plus-icon.svg"
         >
     </a>
 </p>
