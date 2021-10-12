@@ -1,7 +1,7 @@
 <!--suppress HtmlDeprecatedAttribute, HtmlRequiredAltAttribute -->
 
 <p align="center">
-    <a href="https://addons.mozilla.org/en-US/firefox/addon/bandcamp-plus">
+    <a href="https://addons.mozilla.org/en-US/firefox/addon/bandcamp/">
         <img
             width=100
             src="https://raw.githubusercontent.com/bamdadsabbagh/bandcamp-plus--extension/master/assets/icons/bandcamp-plus-icon.svg"
