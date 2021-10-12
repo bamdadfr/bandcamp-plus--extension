@@ -10,13 +10,13 @@ module.exports = {
             'prepareCmd': 'yarn build:prepare ${nextRelease.version} && yarn build',
         }],
         // ['semantic-release-firefox-add-on', {
-        //     'extensionId': '{efb65d38-d0a9-42ff-9025-2d26ee8c753f}',
+        //     'extensionId': '{891ed2be-6ca9-47d1-9466-1595afa33b80}',
         //     'targetXpi': 'bandcamp-plus--extension-${nextRelease.version}.xpi',
         //     'artifactsDir': 'packages',
         //     'channel': 'listed',
         // }],
         // ['semantic-release-chrome', {
-        //     'extensionId': 'ibihnhlidngpabcbomjepjnkhindhlkn',
+        //     'extensionId': '',
         //     'asset': 'bandcamp-plus--extension-${nextRelease.version}.zip',
         // }],
         ['@semantic-release/github', {
