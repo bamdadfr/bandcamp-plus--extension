@@ -1,15 +1,19 @@
-import { playPause } from '../keyboard-events/play-pause'
-import { previous } from '../keyboard-events/previous'
-import { next } from '../keyboard-events/next'
-import { seekForward } from '../keyboard-events/seek-forward'
-import { seekBackward } from '../keyboard-events/seek-backward'
-import { seekStart } from '../keyboard-events/seek-start'
 import { copyInfoToClipboard } from '../utils/copy-info-to-clipboard'
+import { getPlayButton } from '../utils/get-play-button'
+import { getNextButton } from '../utils/get-next-button'
+import { getPreviousButton } from '../utils/get-previous-button'
+import { getAudio } from '../utils/get-audio'
+import { SEEK_STEP } from '../utils/constants'
 
 /**
  *
  */
 export function handleKeyboard () {
+
+    const playButton = getPlayButton ()
+    const nextButton = getNextButton ()
+    const previousButton = getPreviousButton ()
+    const audio = getAudio ()
 
     document.addEventListener ('keydown', async (e) => {
 
@@ -17,20 +21,23 @@ export function handleKeyboard () {
 
         if (e.code === 'KeyC') await copyInfoToClipboard ()
 
-        if (e.code === 'Space') playPause ()
+        if (e.code === 'Space') playButton.click ()
 
-        if (e.code === 'KeyP') previous ()
+        if (e.code === 'KeyP') previousButton.click ()
 
-        if (e.code === 'KeyN') next ()
+        if (e.code === 'KeyN') nextButton.click ()
 
-        if (e.code === 'ArrowRight') seekForward ()
+        if (e.code === 'ArrowRight') audio.currentTime += SEEK_STEP
 
-        if (e.code === 'ArrowLeft') seekBackward ()
+        if (
+            e.code === 'ArrowLeft'
+            && e.shiftKey === false
+        ) audio.currentTime -= SEEK_STEP
 
         if (
             e.code === 'ArrowLeft'
             && e.shiftKey === true
-        ) seekStart ()
+        ) audio.currentTime = 0
 
     })
 
