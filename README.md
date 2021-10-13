@@ -46,7 +46,8 @@
     <img src="https://img.shields.io/badge/ci-github--actions-yellowgreen">
 </p>
 
-- [x] Move track list right below the player
-- [ ] Use `space` keyboard event to play/pause
-- [ ] Use speed/pitch control
+- [x] Track list right below the player
+- [x] Volume slider
+- [ ] `Space` keyboard event to play/pause
+- [ ] Speed/pitch control
 - [ ] Easy sharing with query parameters (current track, speed)
