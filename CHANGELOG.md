@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.2.0...v1.2.1) (2021-10-13)
+
+
+### Performance Improvements
+
+* **content-script:** add conditions before inject ([3d97ccb](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/3d97ccbd949000a8a7c7f56c285dfd9bdfeaccbc))
+* **getters:** remove page verifications (they are now before injection) ([c29ffb3](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/c29ffb348c5dc7a154f6027241c98b4c97d990f7))
+* **keyboard:** move getters inside top handler ([ca08c58](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/ca08c58fcb2a79111e11cd378ad7cf5c404c2692))
+
 # [1.2.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.1.0...v1.2.0) (2021-10-13)
 
 
