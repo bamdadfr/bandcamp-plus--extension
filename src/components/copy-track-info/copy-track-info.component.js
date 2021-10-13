@@ -1,5 +1,4 @@
-import { getArtist } from '../../utils/get-artist'
-import { getTitle } from '../../utils/get-title'
+import { copyInfoToClipboard } from '../../utils/copy-info-to-clipboard'
 
 /**
  * @returns {HTMLSpanElement} copy track info button component
@@ -24,10 +23,7 @@ export function CopyTrackInfoComponent () {
 
     container.addEventListener ('click', async () => {
 
-        const artist = getArtist ()
-        const title = getTitle ()
-
-        await navigator.clipboard.writeText (`${artist} ${title}`)
+        await copyInfoToClipboard ()
     
     })
 

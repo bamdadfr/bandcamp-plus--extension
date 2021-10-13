@@ -1,0 +1,1 @@
+export const SEEK_STEP = 10
