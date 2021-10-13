@@ -48,7 +48,7 @@
 
 - [x] Track list right below the player
 - [x] Volume slider
-- [x] Copy current track as text
+- [x] Copy track info
 - [ ] `Space` for play/pause
 - [ ] `N` for next track
 - [ ] `P` for previous track
