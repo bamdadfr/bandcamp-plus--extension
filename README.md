@@ -48,9 +48,14 @@
 
 - [x] Track list right below the player
 - [x] Volume slider
-- [x] Copy track info
-- [ ] `Space` for play/pause
-- [ ] `N` for next track
-- [ ] `P` for previous track
+- [x] Copy track info button
+- [x] Keyboard events
+  - `Space` play/pause
+  - `N` next track
+  - `P` previous track
+  - `→` seek 10 sec forward
+  - `←` seek 10 sec backward
+  - `Shift + ←` seek start
+  - `C` copy track info
 - [ ] Speed/pitch control
 - [ ] Easy sharing with query parameters (current track, speed)
