@@ -9,12 +9,12 @@ module.exports = {
         ['@semantic-release/exec', {
             'prepareCmd': 'yarn build:prepare ${nextRelease.version} && yarn build',
         }],
-        // ['semantic-release-firefox-add-on', {
-        //     'extensionId': '{891ed2be-6ca9-47d1-9466-1595afa33b80}',
-        //     'targetXpi': 'bandcamp-plus--extension-${nextRelease.version}.xpi',
-        //     'artifactsDir': 'packages',
-        //     'channel': 'listed',
-        // }],
+        ['semantic-release-firefox-add-on', {
+            'extensionId': '{891ed2be-6ca9-47d1-9466-1595afa33b80}',
+            'targetXpi': 'bandcamp-plus--extension-${nextRelease.version}.xpi',
+            'artifactsDir': 'packages',
+            'channel': 'listed',
+        }],
         // ['semantic-release-chrome', {
         //     'extensionId': '',
         //     'asset': 'bandcamp-plus--extension-${nextRelease.version}.zip',
