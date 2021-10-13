@@ -2,12 +2,13 @@ import { isPageAlbum } from './is-page-album'
 import { isPageTrack } from './is-page-track'
 
 /**
- * @returns {HTMLAudioElement|void} current audio element
+ * @returns {string|void} current title
  */
-export function getAudio () {
+export function getTitle () {
 
     if (!(isPageAlbum () || isPageTrack ())) return
 
-    return document.getElementsByTagName ('audio')[0]
+    return document.getElementsByClassName ('title-section')[0]
+        .innerText
 
 }
