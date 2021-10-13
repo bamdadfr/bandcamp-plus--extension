@@ -57,5 +57,10 @@
   - `←` seek 10 sec backward
   - `Shift + ←` seek start
   - `C` copy track info
+  - todo
+    - `Shift + P` first track
+    - replace `C` with `Shift + C` ?
+    - `↑` volume up
+    - `↓` volume down
 - [ ] Speed/pitch control
 - [ ] Easy sharing with query parameters (current track, speed)
