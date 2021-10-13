@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.1.0...v1.2.0) (2021-10-13)
+
+
+### Bug Fixes
+
+* **volume:** components function names in PascalCase ([db0b40c](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/db0b40ce43a7e5b74f1fa667006a12282e48baa2))
+
+
+### Features
+
+* add keyboard events ([25499c0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/25499c06c11666a806bd84b30d6e99e64e4aa68f))
+* **track-info:** add copy track info button ([e13d325](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/e13d3251711126a194cbbb30b8662d86b69f5b56))
+
 # [1.1.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.0.0...v1.1.0) (2021-10-13)
 
 

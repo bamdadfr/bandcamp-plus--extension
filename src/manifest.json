@@ -2,7 +2,7 @@
   "name": "Bandcamp+",
   "short_name": "bandcamp-plus",
   "description": "Add multiple features to bandcamp.com",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "manifest_version": 2,
   "icons": {
     "512": "assets/bandcamp-plus-icon.png"
