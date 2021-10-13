@@ -1,5 +1,5 @@
-import { inputComponent } from './components/input.component'
-import { spanComponent } from './components/span.component'
+import { InputComponent } from './components/input.component'
+import { SpanComponent } from './components/span.component'
 import { getAudio } from '../../utils/get-audio'
 
 /**
@@ -7,7 +7,7 @@ import { getAudio } from '../../utils/get-audio'
  * @param {number} options.defaultValue volume default value
  * @returns {HTMLDivElement} volume div element
  */
-export function volumeComponent ({ defaultValue }) {
+export function VolumeComponent ({ defaultValue }) {
 
     const container = document.createElement ('div')
 
@@ -19,8 +19,8 @@ export function volumeComponent ({ defaultValue }) {
 
     container.style.gridGap = '1em'
 
-    const input = inputComponent ({ defaultValue })
-    const span = spanComponent ({ defaultValue })
+    const input = InputComponent ({ defaultValue })
+    const span = SpanComponent ({ defaultValue })
 
     input.addEventListener ('input', (e) => {
 

@@ -3,7 +3,7 @@
  * @param {number} options.defaultValue volume default value
  * @returns {HTMLSpanElement} volume value
  */
-export function spanComponent ({ defaultValue }) {
+export function SpanComponent ({ defaultValue }) {
 
     const span = document.createElement ('span')
 

@@ -3,7 +3,7 @@
  * @param {number} options.defaultValue volume default value
  * @returns {HTMLInputElement} volume slider
  */
-export function inputComponent ({ defaultValue }) {
+export function InputComponent ({ defaultValue }) {
 
     const input = document.createElement ('input')
 
