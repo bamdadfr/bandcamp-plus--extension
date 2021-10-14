@@ -18,6 +18,10 @@ export function playFirstTrack () {
         ?.children[0]
         ?.children[0]
 
-    if (firstTrackPlayButton) firstTrackPlayButton.click ()
+    if (!firstTrackPlayButton) return
+
+    if (firstTrackPlayButton.classList.contains ('playing')) return
+
+    firstTrackPlayButton.click ()
 
 }
