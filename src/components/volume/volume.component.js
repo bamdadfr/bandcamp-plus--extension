@@ -1,6 +1,7 @@
 import { InputComponent } from './components/input.component'
 import { SpanComponent } from './components/span.component'
 import { getAudio } from '../../utils/get-audio'
+import { VOLUME_LABEL_ID, VOLUME_SLIDER_ID } from '../../utils/constants'
 
 /**
  * @param {object} options options
@@ -19,8 +20,8 @@ export function VolumeComponent ({ defaultValue }) {
 
     container.style.gridGap = '1em'
 
-    const input = InputComponent ({ defaultValue })
-    const span = SpanComponent ({ defaultValue })
+    const input = InputComponent ({ defaultValue, 'id': VOLUME_SLIDER_ID })
+    const span = SpanComponent ({ defaultValue, 'id': VOLUME_LABEL_ID })
 
     input.addEventListener ('input', (e) => {
 
