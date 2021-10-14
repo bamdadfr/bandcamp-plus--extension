@@ -51,16 +51,14 @@
 - [x] Copy track info button
 - [x] Keyboard events
   - `Space` play/pause
+  - `C` copy track info
   - `N` next track
   - `P` previous track
+  - `Shift + P` play first track
   - `→` seek 10 sec forward
   - `←` seek 10 sec backward
   - `Shift + ←` seek start
-  - `C` copy track info
-  - todo
-    - `Shift + P` first track
-    - replace `C` with `Shift + C` ?
-    - `↑` volume up
-    - `↓` volume down
+  - `↑` volume up
+  - `↓` volume down
 - [ ] Speed/pitch control
 - [ ] Easy sharing with query parameters (current track, speed)
