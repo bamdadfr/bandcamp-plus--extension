@@ -1,68 +1,32 @@
-import { copyInfoToClipboard } from '../utils/copy-info-to-clipboard'
-import { getPlayButton } from '../utils/get-play-button'
-import { getNextButton } from '../utils/get-next-button'
-import { getPreviousButton } from '../utils/get-previous-button'
-import { getAudio } from '../utils/get-audio'
-import { SEEK_STEP } from '../utils/constants'
-import { changeVolume } from '../utils/change-volume'
-import { playFirstTrack } from '../utils/play-first-track'
+import { getKeyboardEvents } from '../keyboard-events/get-keyboard-events'
+import { getKeyboardEventsPreventing } from '../keyboard-events/get-keyboard-events-preventing'
+import { getKeyboardEventsWithShift } from '../keyboard-events/get-keyboard-events-with-shift'
 
 /**
  *
  */
 export function handleKeyboard () {
 
-    const play = getPlayButton ()
-    const next = getNextButton ()
-    const previous = getPreviousButton ()
-    const audio = getAudio ()
+    const events = getKeyboardEvents ()
+    const eventsPreventing = getKeyboardEventsPreventing ()
+    const eventsWithShift = getKeyboardEventsWithShift ()
 
     document.addEventListener ('keydown', async (e) => {
 
-        if (
-            e.code === 'Space'
-            || e.code === 'ArrowLeft'
-            || e.code === 'ArrowRight'
-            || e.code === 'ArrowDown'
-            || e.code === 'ArrowUp'
-        ) {
+        const { code, shiftKey } = e
 
-            e.preventDefault ()
+        if (eventsPreventing[code]) e.preventDefault ()
 
+        if (!shiftKey) {
+
+            if (events[code]) events[code] ()
+
+        } else {
+
+            if (eventsWithShift[code]) eventsWithShift[code] ()
+        
         }
 
-        if (e.code === 'KeyC') await copyInfoToClipboard ()
-
-        if (e.code === 'Space') play.click ()
-
-        if (
-            e.code === 'KeyP'
-            && e.shiftKey === false
-        ) previous.click ()
-
-        if (e.code === 'KeyN') next.click ()
-
-        if (
-            e.code === 'KeyP'
-            && e.shiftKey === true
-        ) playFirstTrack ()
-
-        if (e.code === 'ArrowRight') audio.currentTime += SEEK_STEP
-
-        if (
-            e.code === 'ArrowLeft'
-            && e.shiftKey === false
-        ) audio.currentTime -= SEEK_STEP
-
-        if (
-            e.code === 'ArrowLeft'
-            && e.shiftKey === true
-        ) audio.currentTime = 0
-
-        if (e.code === 'ArrowUp') changeVolume ()
-
-        if (e.code === 'ArrowDown') changeVolume (false)
-        
     })
 
 }
