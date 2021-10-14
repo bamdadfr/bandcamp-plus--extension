@@ -1,3 +1,20 @@
+# [1.3.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.2.1...v1.3.0) (2021-10-14)
+
+
+### Bug Fixes
+
+* **get-title:** correctly retrieve title when page is /track/ ([140e03b](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/140e03b9a3424c24428cb4e73774972cef49c8d6))
+
+
+### Features
+
+* **keyboard:** add `changeVolume` + `playFirstTrack` features + prevent only needed keys ([70fdda3](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/70fdda30da37e7d4ec6dd2b983cc28094b104644))
+
+
+### Performance Improvements
+
+* **volume.component:** provide IDs for DOM elements ([58d3d9a](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/58d3d9a0da1b6de2e86d232990dc3258bfe38164))
+
 ## [1.2.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.2.0...v1.2.1) (2021-10-13)
 
 
