@@ -1,3 +1,15 @@
+## [1.3.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.3.0...v1.3.1) (2021-10-14)
+
+
+### Bug Fixes
+
+* **play-first-track:** add check if first track is already playing ([52be982](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/52be982bceadff01324b14829c04fd19b010954b))
+
+
+### Performance Improvements
+
+* **keyboard:** replace conditions with object lookups ([adf0d54](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/adf0d5425e0a7116929ebc53ae2f74141be45b04))
+
 # [1.3.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.2.1...v1.3.0) (2021-10-14)
 
 
