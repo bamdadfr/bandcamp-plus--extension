@@ -4,28 +4,48 @@ import { getNextButton } from '../utils/get-next-button'
 import { getPreviousButton } from '../utils/get-previous-button'
 import { getAudio } from '../utils/get-audio'
 import { SEEK_STEP } from '../utils/constants'
+import { changeVolume } from '../utils/change-volume'
+import { playFirstTrack } from '../utils/play-first-track'
 
 /**
  *
  */
 export function handleKeyboard () {
 
-    const playButton = getPlayButton ()
-    const nextButton = getNextButton ()
-    const previousButton = getPreviousButton ()
+    const play = getPlayButton ()
+    const next = getNextButton ()
+    const previous = getPreviousButton ()
     const audio = getAudio ()
 
     document.addEventListener ('keydown', async (e) => {
 
-        e.preventDefault ()
+        if (
+            e.code === 'Space'
+            || e.code === 'ArrowLeft'
+            || e.code === 'ArrowRight'
+            || e.code === 'ArrowDown'
+            || e.code === 'ArrowUp'
+        ) {
+
+            e.preventDefault ()
+
+        }
 
         if (e.code === 'KeyC') await copyInfoToClipboard ()
 
-        if (e.code === 'Space') playButton.click ()
+        if (e.code === 'Space') play.click ()
 
-        if (e.code === 'KeyP') previousButton.click ()
+        if (
+            e.code === 'KeyP'
+            && e.shiftKey === false
+        ) previous.click ()
 
-        if (e.code === 'KeyN') nextButton.click ()
+        if (e.code === 'KeyN') next.click ()
+
+        if (
+            e.code === 'KeyP'
+            && e.shiftKey === true
+        ) playFirstTrack ()
 
         if (e.code === 'ArrowRight') audio.currentTime += SEEK_STEP
 
@@ -39,6 +59,10 @@ export function handleKeyboard () {
             && e.shiftKey === true
         ) audio.currentTime = 0
 
+        if (e.code === 'ArrowUp') changeVolume ()
+
+        if (e.code === 'ArrowDown') changeVolume (false)
+        
     })
 
 }
