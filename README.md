@@ -46,6 +46,10 @@
     <img src="https://img.shields.io/badge/ci-github--actions-yellowgreen">
 </p>
 
+![](https://raw.githubusercontent.com/bamdadsabbagh/bandcamp-plus--extension/master/assets/screenshots/screenshot-01.png)
+
+## 📖 Features
+
 - [x] Track list right below the player
 - [x] Volume slider
 - [x] Copy track info button
@@ -62,3 +66,8 @@
   - `↓` volume down
 - [ ] Speed/pitch control
 - [ ] Easy sharing with query parameters (current track, speed)
+
+
+## 🚀 Download
+
+[<img height=30 src="https://icons.iconarchive.com/icons/cornmanthe3rd/plex/256/Internet-firefox-icon.png"> **Firefox**](https://addons.mozilla.org/en-US/firefox/addon/bandcamp/)
