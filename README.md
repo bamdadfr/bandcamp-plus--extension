@@ -42,6 +42,12 @@
     <img src="https://img.shields.io/amo/users/bandcamp">
 </p>
 
+<p align=center>
+  <img src="https://img.shields.io/chrome-web-store/v/hggjmjobahhmbmnfndhdgidchhhhjkad">
+  <img src="https://img.shields.io/chrome-web-store/stars/hggjmjobahhmbmnfndhdgidchhhhjkad">
+  <img src="https://img.shields.io/chrome-web-store/users/hggjmjobahhmbmnfndhdgidchhhhjkad">
+</p>
+
 <p align="center">
     <img src="https://img.shields.io/badge/ci-github--actions-yellowgreen">
 </p>
@@ -71,3 +77,5 @@
 ## 🚀 Download
 
 [<img height=30 src="https://icons.iconarchive.com/icons/cornmanthe3rd/plex/256/Internet-firefox-icon.png"> **Firefox**](https://addons.mozilla.org/en-US/firefox/addon/bandcamp/)
+
+[<img height=30 src="https://icons.iconarchive.com/icons/cornmanthe3rd/plex/256/Internet-chrome-icon.png"> **Chrome**](https://chrome.google.com/webstore/detail/bandcamp%2B/hggjmjobahhmbmnfndhdgidchhhhjkad)
