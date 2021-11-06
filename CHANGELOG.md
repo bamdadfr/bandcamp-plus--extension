@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.3.2...v1.3.3) (2021-11-06)
+
+
+### Bug Fixes
+
+* remove unused permissions ([ed93efc](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/ed93efcf1f3a6718e0b89d76b364df328b476d4f))
+
 ## [1.3.2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.3.1...v1.3.2) (2021-11-06)
 
 
