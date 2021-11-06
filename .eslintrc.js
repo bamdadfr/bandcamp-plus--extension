@@ -3,5 +3,6 @@ module.exports = {
   'rules': {
     'padded-blocks': ['error', 'never'],
     'eol-last': ['error', 'always'],
+    'semi-style': ['error', 'last'],
   },
 };
