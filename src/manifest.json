@@ -29,9 +29,5 @@
     "scripts": [
       "scripts/background.js"
     ]
-  },
-  "permissions": [
-    "storage",
-    "tabs"
-  ]
+  }
 }
