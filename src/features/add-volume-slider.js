@@ -1,17 +1,17 @@
-import { getPlayer } from '../utils/get-player'
-import { VolumeComponent } from '../components/volume/volume.component'
+import { getPlayer } from '../utils/get-player';
+import { VolumeComponent } from '../components/volume/volume.component';
 
 /**
- * @description add volume slider
+ * Adds a volume slider to the player.
  */
 export function addVolumeSlider () {
+  const player = getPlayer ();
 
-    const player = getPlayer ()
+  if (!player) {
+    return;
+  }
 
-    if (!player) return
+  const volume = VolumeComponent ({ 'defaultValue': 0.7 });
 
-    const volume = VolumeComponent ({ 'defaultValue': 0.7 })
-
-    player.insertAdjacentElement ('afterend', volume)
-
+  player.insertAdjacentElement ('afterend', volume);
 }

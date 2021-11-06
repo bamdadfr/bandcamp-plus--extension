@@ -5,21 +5,16 @@
  * @returns {HTMLInputElement} volume slider
  */
 export function InputComponent ({ defaultValue, id = undefined }) {
+  const input = document.createElement ('input');
+  input.type = 'range';
+  input.min = '0';
+  input.max = '1';
+  input.step = '0.01';
+  input.value = defaultValue.toString ();
 
-    const input = document.createElement ('input')
+  if (id) {
+    input.id = id;
+  }
 
-    input.type = 'range'
-
-    input.min = '0'
-
-    input.max = '1'
-
-    input.step = '0.01'
-
-    input.value = defaultValue.toString ()
-
-    if (id) input.id = id
-
-    return input
-
+  return input;
 }

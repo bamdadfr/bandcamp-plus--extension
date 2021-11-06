@@ -1,27 +1,31 @@
-import { getTracks } from './get-tracks'
+import { getTracks } from './get-tracks';
 
 /**
- *
+ * Play the first track in the playlist.
  */
 export function playFirstTrack () {
+  const tracks = getTracks ();
 
-    const tracks = getTracks ()
+  const firstTrackContainer = tracks
+    ?.children[0]
+    ?.children[0];
 
-    const firstTrackContainer = tracks
-        ?.children[0]
-        ?.children[0]
+  if (!firstTrackContainer) {
+    return;
+  }
 
-    if (!firstTrackContainer) return
+  const firstTrackPlayButton = firstTrackContainer
+    ?.children[0]
+    ?.children[0]
+    ?.children[0];
 
-    const firstTrackPlayButton = firstTrackContainer
-        ?.children[0]
-        ?.children[0]
-        ?.children[0]
+  if (!firstTrackPlayButton) {
+    return;
+  }
 
-    if (!firstTrackPlayButton) return
+  if (firstTrackPlayButton.classList.contains ('playing')) {
+    return;
+  }
 
-    if (firstTrackPlayButton.classList.contains ('playing')) return
-
-    firstTrackPlayButton.click ()
-
+  firstTrackPlayButton.click ();
 }

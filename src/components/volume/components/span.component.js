@@ -5,13 +5,12 @@
  * @returns {HTMLSpanElement} volume value
  */
 export function SpanComponent ({ defaultValue, id = undefined }) {
+  const span = document.createElement ('span');
+  span.innerText = defaultValue.toString ();
 
-    const span = document.createElement ('span')
+  if (id) {
+    span.id = id;
+  }
 
-    span.innerText = defaultValue.toString ()
-
-    if (id) span.id = id
-
-    return span
-
+  return span;
 }
