@@ -1,9 +1,4 @@
-/* eslint-disable no-template-curly-in-string, no-unused-vars */
-// noinspection JSUnusedLocalSymbols
-
-const name = 'bandcamp-plus--extension';
-const firefoxId = '{891ed2be-6ca9-47d1-9466-1595afa33b80}';
-const chromeId = 'hggjmjobahhmbmnfndhdgidchhhhjkad';
+/* eslint-disable no-template-curly-in-string */
 
 module.exports = {
   'plugins': [
@@ -16,19 +11,19 @@ module.exports = {
       prepareCmd: 'yarn build:prepare ${nextRelease.version} && yarn build',
     }],
     ['semantic-release-firefox-add-on', {
-      extensionId: firefoxId,
-      targetXpi: '${name}-${nextRelease.version}.xpi',
+      extensionId: '{891ed2be-6ca9-47d1-9466-1595afa33b80}',
+      targetXpi: 'bandcamp-plus--extension-${nextRelease.version}.xpi',
       artifactsDir: 'packages',
       channel: 'listed',
     }],
     ['semantic-release-chrome', {
-      extensionId: chromeId,
-      asset: '${name}-${nextRelease.version}.zip',
+      extensionId: 'hggjmjobahhmbmnfndhdgidchhhhjkad',
+      asset: 'bandcamp-plus--extension-${nextRelease.version}.zip',
     }],
     ['@semantic-release/github', {
       assets: [
-        'packages/${name}-${nextRelease.version}.xpi',
-        '${name}-${nextRelease.version}.zip',
+        'packages/bandcamp-plus--extension-${nextRelease.version}.xpi',
+        'bandcamp-plus--extension-${nextRelease.version}.zip',
       ],
     }],
     ['@semantic-release/git', {
