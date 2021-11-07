@@ -16,10 +16,10 @@ module.exports = {
       artifactsDir: 'packages',
       channel: 'listed',
     }],
-    ['semantic-release-chrome', {
-      extensionId: 'hggjmjobahhmbmnfndhdgidchhhhjkad',
-      asset: 'bandcamp-plus--extension-${nextRelease.version}.zip',
-    }],
+    // ['semantic-release-chrome', {
+    //   extensionId: 'hggjmjobahhmbmnfndhdgidchhhhjkad',
+    //   asset: 'bandcamp-plus--extension-${nextRelease.version}.zip',
+    // }],
     ['@semantic-release/github', {
       assets: [
         'packages/bandcamp-plus--extension-${nextRelease.version}.xpi',
