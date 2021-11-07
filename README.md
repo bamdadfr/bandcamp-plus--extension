@@ -1,16 +1,16 @@
-![license](https://img.shields.io/github/license/bamdadsabbagh/bandcamp-plus--extension)
 ![release](https://img.shields.io/github/v/release/bamdadsabbagh/bandcamp-plus--extension)
+![license](https://img.shields.io/github/license/bamdadsabbagh/bandcamp-plus--extension)
 ![maintainability](https://img.shields.io/codeclimate/maintainability/bamdadsabbagh/bandcamp-plus--extension)
 ![coverage](https://img.shields.io/codeclimate/coverage/bamdadsabbagh/bandcamp-plus--extension)
 ![snyk](https://img.shields.io/snyk/vulnerabilities/github/bamdadsabbagh/bandcamp-plus--extension)
 
+![chrome version](https://img.shields.io/chrome-web-store/v/hggjmjobahhmbmnfndhdgidchhhhjkad?label=chrome)
 ![chrome users](https://img.shields.io/chrome-web-store/users/hggjmjobahhmbmnfndhdgidchhhhjkad)
 ![chrome rating](https://img.shields.io/chrome-web-store/stars/hggjmjobahhmbmnfndhdgidchhhhjkad)
-![chrome version](https://img.shields.io/chrome-web-store/v/hggjmjobahhmbmnfndhdgidchhhhjkad)
 
+![firefox version](https://img.shields.io/amo/v/bandcamp?label=firefox)
 ![firefox users](https://img.shields.io/amo/users/bandcamp)
 ![firefox rating](https://img.shields.io/amo/stars/bandcamp?label=rating)
-![firefox version](https://img.shields.io/amo/v/bandcamp)
 
 <img alt="logo" width="80px" src="https://raw.githubusercontent.com/bamdadsabbagh/bandcamp-plus--extension/master/assets/icons/bandcamp-plus-icon.svg">
 
