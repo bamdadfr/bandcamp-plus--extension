@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.3.3...v1.3.4) (2021-11-09)
+
+
+### Performance Improvements
+
+* upgrade dependencies ([2e7ccba](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/2e7ccbac3b0331825cad89bb71c2d33306e1fd97))
+
 ## [1.3.3](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.3.2...v1.3.3) (2021-11-06)
 
 
