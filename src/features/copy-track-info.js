@@ -1,12 +1,15 @@
-import { getTrackInfo } from '../utils/get-track-info';
-import { CopyTrackInfoComponent } from '../components/copy-track-info/copy-track-info.component';
+import {
+  CopyTrackInfoComponent,
+} from '../components/copy-track-info/copy-track-info.component';
+import {getPlayer} from '../utils/get-player';
 
 /**
  * Copy track info to clipboard
  */
-export function copyTrackInfo () {
-  const info = getTrackInfo ();
-  const copyTrackInfo = CopyTrackInfoComponent ();
-
-  info.insertAdjacentElement ('afterbegin', copyTrackInfo);
+export function copyTrackInfo() {
+  const player = getPlayer();
+  if (player) {
+    const copyTrackInfo = CopyTrackInfoComponent();
+    player.insertAdjacentElement('afterend', copyTrackInfo);
+  }
 }

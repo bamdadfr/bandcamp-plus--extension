@@ -25,19 +25,21 @@
     "package:reinstall": "rimraf node_modules && yarn",
     "package:sort": "npx sort-package-json"
   },
-  "dependencies": {},
+  "dependencies": {
+    "speed-to-percentage": "^1.2.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.0",
-    "@babel/plugin-transform-runtime": "^7.16.0",
-    "@babel/preset-env": "^7.16.0",
-    "@bamdadsabbagh/eslint-config": "^1.17.2",
+    "@babel/plugin-transform-runtime": "^7.16.4",
+    "@babel/preset-env": "^7.16.4",
+    "@bamdadsabbagh/eslint-config": "^2.0.4",
     "babel-loader": "^8.2.3",
-    "concurrently": "^6.0.0",
-    "copy-webpack-plugin": "^9.0.0",
+    "concurrently": "^6.4.0",
+    "copy-webpack-plugin": "^10.1.0",
     "rimraf": "^3.0.2",
     "wait-on": "^6.0.0",
-    "web-ext": "^6.5.0",
-    "webpack": "^5.62.1",
+    "web-ext": "^6.6.0",
+    "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1"
   },
   "webExt": {

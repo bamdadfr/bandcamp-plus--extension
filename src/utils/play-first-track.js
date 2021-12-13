@@ -1,10 +1,10 @@
-import { getTracks } from './get-tracks';
+import {getTracks} from './get-tracks';
 
 /**
  * Play the first track in the playlist.
  */
-export function playFirstTrack () {
-  const tracks = getTracks ();
+export function playFirstTrack() {
+  const tracks = getTracks();
 
   const firstTrackContainer = tracks
     ?.children[0]
@@ -23,9 +23,9 @@ export function playFirstTrack () {
     return;
   }
 
-  if (firstTrackPlayButton.classList.contains ('playing')) {
+  if (firstTrackPlayButton.classList.contains('playing')) {
     return;
   }
 
-  firstTrackPlayButton.click ();
+  firstTrackPlayButton.click();
 }
