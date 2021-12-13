@@ -25,7 +25,9 @@
     "package:reinstall": "rimraf node_modules && yarn",
     "package:sort": "npx sort-package-json"
   },
-  "dependencies": {},
+  "dependencies": {
+    "speed-to-percentage": "^1.2.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/plugin-transform-runtime": "^7.16.4",

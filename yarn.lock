@@ -5309,6 +5309,11 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.11.tgz#50c0d8c40a14ec1bf449bae69a0ea4685a9d9f95"
   integrity sha512-Ctl2BrFiM0X3MANYgj3CkygxhRmr9mi6xhejbdO960nF6EDJApTYpn0BQnDKlnNBULKiCN1n3w9EBkHK8ZWg+g==
 
+speed-to-percentage@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/speed-to-percentage/-/speed-to-percentage-1.2.0.tgz#086e523558cdada6537ff29e20ed31b760d6026c"
+  integrity sha512-3t6I6EF33QiRAznynRESSy+Rj1G5Rnssl7a/3ebnuihT9GaBZDpp8RyRqv2gik3WZCU8pIW22eQRt0cAbsCjIQ==
+
 split2@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/split2/-/split2-4.1.0.tgz#101907a24370f85bb782f08adaabe4e281ecf809"
