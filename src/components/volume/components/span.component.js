@@ -4,9 +4,9 @@
  * @param {string} [options.id] HTML id
  * @returns {HTMLSpanElement} volume value
  */
-export function SpanComponent ({ defaultValue, id = undefined }) {
-  const span = document.createElement ('span');
-  span.innerText = defaultValue.toString ();
+export function SpanComponent({defaultValue, id = undefined}) {
+  const span = document.createElement('span');
+  span.innerText = defaultValue.toString();
 
   if (id) {
     span.id = id;

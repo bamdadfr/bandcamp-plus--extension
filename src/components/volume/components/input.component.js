@@ -4,13 +4,13 @@
  * @param {string} [options.id] HTML id
  * @returns {HTMLInputElement} volume slider
  */
-export function InputComponent ({ defaultValue, id = undefined }) {
-  const input = document.createElement ('input');
+export function InputComponent({defaultValue, id = undefined}) {
+  const input = document.createElement('input');
   input.type = 'range';
   input.min = '0';
   input.max = '1';
   input.step = '0.01';
-  input.value = defaultValue.toString ();
+  input.value = defaultValue.toString();
 
   if (id) {
     input.id = id;

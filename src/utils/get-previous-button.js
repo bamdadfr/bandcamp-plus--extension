@@ -1,6 +1,6 @@
 /**
  * @returns {HTMLDivElement} previous button
  */
-export function getPreviousButton () {
-  return document.getElementsByClassName ('prevbutton')[0];
+export function getPreviousButton() {
+  return document.getElementsByClassName('prevbutton')[0];
 }
