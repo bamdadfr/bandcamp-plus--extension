@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.3.4...v1.4.0) (2021-12-13)
+
+
+### Features
+
+* add speed slider only for firefox ([0bdbcaa](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/0bdbcaa16ed5570674a7dea067cb92cc9edfa931))
+
+
+### Performance Improvements
+
+* upgrade dependencies ([dca7c8b](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/dca7c8bc859b43bfdb63a2cc1fb86db54a6b747b))
+
 ## [1.3.4](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.3.3...v1.3.4) (2021-11-09)
 
 
