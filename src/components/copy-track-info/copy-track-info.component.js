@@ -12,7 +12,7 @@ export function CopyTrackInfoComponent() {
   container.style.userSelect = 'none';
 
   const span = document.createElement('span');
-  span.innerText = 'C';
+  span.innerText = 'Copy';
 
   container.addEventListener('click', async () => {
     await copyInfoToClipboard();

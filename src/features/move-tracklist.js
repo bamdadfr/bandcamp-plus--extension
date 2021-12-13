@@ -6,11 +6,8 @@ import {getTracks} from '../utils/get-tracks';
  */
 export function moveTrackList() {
   const player = getPlayer();
-
-  if (!player) {
-    return;
+  if (player) {
+    const tracks = getTracks();
+    player.insertAdjacentElement('afterend', tracks);
   }
-
-  const tracks = getTracks();
-  player.insertAdjacentElement('afterend', tracks);
 }

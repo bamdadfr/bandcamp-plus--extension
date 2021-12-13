@@ -28,20 +28,20 @@ Add multiple features to <a href="https://www.bandcamp.com/">bandcamp.com</a>
 
 - Track list right below the player
 - Volume slider
+- Speed slider
 - Copy track info button
 - Keyboard events
-    - `Space` play/pause
-    - `C` copy track info
-    - `N` next track
-    - `P` previous track
-    - `Shift + P` play first track
-    - `→` seek 10 sec forward
-    - `←` seek 10 sec backward
-    - `Shift + ←` seek start
-    - `↑` volume up
-    - `↓` volume down
+  - `Space` play/pause
+  - `C` copy track info
+  - `N` next track
+  - `P` previous track
+  - `Shift + P` play first track
+  - `→` seek 10 sec forward
+  - `←` seek 10 sec backward
+  - `Shift + ←` seek start
+  - `↑` volume up
+  - `↓` volume down
 
 ### Next features
 
-- Speed/pitch control
 - Easy sharing with query parameters (current track, speed)

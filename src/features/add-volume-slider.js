@@ -6,12 +6,8 @@ import {VolumeComponent} from '../components/volume/volume.component';
  */
 export function addVolumeSlider() {
   const player = getPlayer();
-
-  if (!player) {
-    return;
+  if (player) {
+    const volume = VolumeComponent({'defaultValue': 0.7});
+    player.insertAdjacentElement('afterend', volume);
   }
-
-  const volume = VolumeComponent({'defaultValue': 0.7});
-
-  player.insertAdjacentElement('afterend', volume);
 }
