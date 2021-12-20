@@ -926,10 +926,10 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
-"@bamdadsabbagh/eslint-config@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@bamdadsabbagh/eslint-config/-/eslint-config-2.0.4.tgz#cf2c9a84428cc40ef5f7bc0ea9b18db469197c77"
-  integrity sha512-A936xz4rygKPflz/e9QOxjfB2Cros2gtyMx/uEZUWrspBH687qAXwRcRLlMoz46JO7+UXriS/kup+PxBYj98iA==
+"@bamdadsabbagh/eslint-config@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@bamdadsabbagh/eslint-config/-/eslint-config-2.0.6.tgz#d2468e4a50362349227e9ff55f7ef2614cc102af"
+  integrity sha512-CYue57izy3ocEr5OJi4hEZgA1j4qYLxrUsYCRF6DxXLYKIifF100xNYEPAK03SUwNTDqCEDaiGiv1tR38/nnqQ==
   dependencies:
     "@babel/core" "^7.15.0"
     "@babel/eslint-parser" "^7.15.0"
