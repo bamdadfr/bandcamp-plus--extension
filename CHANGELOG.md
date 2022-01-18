@@ -1,3 +1,11 @@
+## [1.4.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.4.0...v1.4.1) (2022-01-18)
+
+
+### Performance Improvements
+
+* enable automatic chrome store release ([c62d804](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/c62d8040fd277107060bdc2627edadff09eb3d82))
+* update dependencies ([6dced6a](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/6dced6aeac2c3fc2bc96b149cd7a37a25da9ce47))
+
 # [1.4.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.3.4...v1.4.0) (2021-12-13)
 
 
