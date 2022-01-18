@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.4.1...v1.4.2) (2022-01-18)
+
+
+### Performance Improvements
+
+* dummy commit to test release pipeline ([baeb4db](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/baeb4db87bed01967f2c38ab458711c25bb76d6f))
+
 ## [1.4.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.4.0...v1.4.1) (2022-01-18)
 
 
