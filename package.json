@@ -29,7 +29,7 @@
     "speed-to-percentage": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.7",
+    "@babel/core": "^7.16.10",
     "@babel/plugin-transform-runtime": "^7.16.8",
     "@babel/preset-env": "^7.16.8",
     "@bamdadsabbagh/eslint-config": "^2.0.10",
