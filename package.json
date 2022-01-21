@@ -35,7 +35,7 @@
     "@bamdadsabbagh/eslint-config": "^2.0.10",
     "babel-loader": "^8.2.3",
     "concurrently": "^7.0.0",
-    "copy-webpack-plugin": "^10.2.0",
+    "copy-webpack-plugin": "^10.2.1",
     "rimraf": "^3.0.2",
     "wait-on": "^6.0.0",
     "web-ext": "^6.6.0",
