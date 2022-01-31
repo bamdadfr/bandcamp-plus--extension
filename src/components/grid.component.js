@@ -7,7 +7,7 @@ export function GridComponent() {
   const container = document.createElement('div');
   container.style.display = 'grid';
   container.style.alignItems = 'center';
-  container.style.gridTemplateColumns = '54px 1fr 2em';
+  container.style.gridTemplateColumns = '54px 250px 1fr';
   container.style.gridGap = '1em';
 
   return container;
