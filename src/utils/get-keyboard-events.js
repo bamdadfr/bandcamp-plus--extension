@@ -1,13 +1,15 @@
-import {getPlayButton} from '../utils/get-play-button';
-import {getNextButton} from '../utils/get-next-button';
-import {getPreviousButton} from '../utils/get-previous-button';
-import {getAudio} from '../utils/get-audio';
-import {copyInfoToClipboard} from '../utils/copy-info-to-clipboard';
-import {SEEK_STEP} from '../utils/constants';
-import {changeVolume} from '../utils/change-volume';
+import {getPlayButton} from './get-play-button';
+import {getNextButton} from './get-next-button';
+import {getPreviousButton} from './get-previous-button';
+import {getAudio} from './get-audio';
+import {copyInfoToClipboard} from './copy-info-to-clipboard';
+import {SEEK_STEP} from '../constants';
+import {changeVolume} from './change-volume';
 
 /**
- * @returns {object} object lookup for keyboard events
+ * Utility function to get the keyboard events.
+ *
+ * @returns {object} - The keyboard events.
  */
 export function getKeyboardEvents() {
   const play = getPlayButton();

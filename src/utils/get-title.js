@@ -2,7 +2,9 @@ import {isPageTrack} from './is-page-track';
 import {isPageAlbum} from './is-page-album';
 
 /**
- * @returns {string} current title
+ * Utility function to get the title of a track or album.
+ *
+ * @returns {string} - The title of the track or album.
  */
 export function getTitle() {
   if (isPageTrack()) {

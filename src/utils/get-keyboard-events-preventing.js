@@ -1,5 +1,7 @@
 /**
- * @returns {object} object lookup for events preventing default behaviour
+ * Utility to get the list of keyboard events preventing the default behavior.
+ *
+ * @returns {object} - The list of keyboard events preventing the default behavior.
  */
 export function getKeyboardEventsPreventing() {
   return {

@@ -2,9 +2,9 @@ import {getPlayer} from '../utils/get-player';
 import {getTracks} from '../utils/get-tracks';
 
 /**
- * @description position track list right below the player
+ * Move the playlist right after the player.
  */
-export function moveTrackList() {
+export function movePlaylist() {
   const player = getPlayer();
   if (player) {
     const tracks = getTracks();
