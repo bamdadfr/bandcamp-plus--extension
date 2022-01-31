@@ -1,3 +1,21 @@
+# [1.5.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.4.2...v1.5.0) (2022-01-31)
+
+
+### Bug Fixes
+
+* **GridComponent:** Fix the slider width to align with player dimensions ([9acfedd](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/9acfedddf3015981644c64e62cce0bddbeecd260))
+* Rectify margins only when context is valid ([a15857c](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/a15857ccfbb99062ae458266afeb18b6cb0b228f))
+
+
+### Features
+
+* Style buttons + Add reset functionality to volume and speed controls + Rename files, folders and functions + Add JSDOC + Various improvements ([faea980](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/faea9800ae13b467d83381bb40ff525f37c8c62e))
+
+
+### Performance Improvements
+
+* **Dependencies:** Update to latest ([4d9b869](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/4d9b869a3b5c8ca063d480fa9c052cabdf168748))
+
 ## [1.4.2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.4.1...v1.4.2) (2022-01-18)
 
 
