@@ -1,10 +1,10 @@
-import {getKeyboardEvents} from '../keyboard-events/get-keyboard-events';
+import {getKeyboardEvents} from '../utils/get-keyboard-events';
 import {
   getKeyboardEventsPreventing,
-} from '../keyboard-events/get-keyboard-events-preventing';
+} from '../utils/get-keyboard-events-preventing';
 import {
   getKeyboardEventsWithShift,
-} from '../keyboard-events/get-keyboard-events-with-shift';
+} from '../utils/get-keyboard-events-with-shift';
 
 /**
  * Handle keyboard events.

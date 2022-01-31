@@ -1,6 +1,6 @@
 import {
-  CopyTrackInfoComponent,
-} from '../components/copy-track-info/copy-track-info.component';
+  CopyTrackInfoModule,
+} from '../modules/copy-track-info.module';
 import {getPlayer} from '../utils/get-player';
 
 /**
@@ -9,7 +9,7 @@ import {getPlayer} from '../utils/get-player';
 export function copyTrackInfo() {
   const player = getPlayer();
   if (player) {
-    const copyTrackInfo = CopyTrackInfoComponent();
+    const copyTrackInfo = CopyTrackInfoModule();
     player.insertAdjacentElement('afterend', copyTrackInfo);
   }
 }

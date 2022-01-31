@@ -2,7 +2,7 @@ import {getArtist} from './get-artist';
 import {getTitle} from './get-title';
 
 /**
- * Copy info to clipboard
+ * Utility function to copy the current song info to the clipboard.
  */
 export async function copyInfoToClipboard() {
   const artist = getArtist();

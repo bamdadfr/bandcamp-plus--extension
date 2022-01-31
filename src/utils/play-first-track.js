@@ -1,7 +1,7 @@
 import {getTracks} from './get-tracks';
 
 /**
- * Play the first track in the playlist.
+ * Utility function to play the first track in the playlist.
  */
 export function playFirstTrack() {
   const tracks = getTracks();

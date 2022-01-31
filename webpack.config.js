@@ -1,8 +1,8 @@
-const CopyPlugin = require ('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 
 // eslint-disable-next-line no-console
-console.log ('Production mode is: ', isProduction);
+console.log('Production mode is: ', isProduction);
 
 module.exports = {
   'watch': !isProduction,
@@ -17,7 +17,7 @@ module.exports = {
   },
   'node': false,
   'plugins': [
-    new CopyPlugin ({
+    new CopyPlugin({
       'patterns': [
         {
           'from': './src/manifest.json',
