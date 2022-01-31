@@ -9,8 +9,6 @@ import {isFirefox} from '../utils/is-firefox';
 import {rectifyOriginalMargins} from '../utils/rectify-original-margins';
 
 window.addEventListener('load', () => {
-  rectifyOriginalMargins();
-
   if (isPageAlbum()) {
     movePlaylist();
   }
@@ -25,5 +23,6 @@ window.addEventListener('load', () => {
     addVolumeSlider();
     copyTrackInfo();
     handleKeyboard();
+    rectifyOriginalMargins();
   }
 });
