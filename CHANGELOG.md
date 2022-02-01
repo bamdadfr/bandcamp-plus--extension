@@ -1,3 +1,10 @@
+# [2.0.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.5.0...v2.0.0) (2022-02-01)
+
+
+### Features
+
+* Copy and apply bandcamp styling for ranges + Display a new grid on two rows + Display semitones information in speed module ([9411e95](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/9411e957c14c076b6381b238f807a16f3f1313bb))
+
 # [1.5.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.4.2...v1.5.0) (2022-01-31)
 
 
