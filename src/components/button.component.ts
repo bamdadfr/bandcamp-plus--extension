@@ -7,22 +7,18 @@ import {COLORS, TIMEOUT} from '../constants';
 export class ButtonComponent {
   private readonly node: HTMLSpanElement;
 
-  private readonly content: HTMLSpanElement;
-
-  private readonly text: string;
+  private readonly defaultText: string;
 
   private readonly clickTimeout: number;
 
   constructor(text: string) {
     // props
-    this.text = text;
+    this.defaultText = text;
     this.clickTimeout = TIMEOUT;
 
     // elements
     this.node = document.createElement('span');
-    this.content = document.createElement('span');
-    this.content.innerText = this.text;
-    this.node.appendChild(this.content);
+    this.node.textContent = this.defaultText;
 
     // styles
     this.applyStyles();
@@ -45,10 +41,10 @@ export class ButtonComponent {
         return;
       }
 
-      this.content.innerText = activeText;
+      this.node.textContent = activeText;
 
       setTimeout(() => {
-        this.content.innerText = this.text;
+        this.node.textContent = this.defaultText;
       }, this.clickTimeout);
     };
   }

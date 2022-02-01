@@ -1,4 +1,4 @@
-type Children = {
+export type GridChildren = {
   first: HTMLSpanElement;
   second: HTMLSpanElement;
   third: HTMLInputElement;
@@ -24,7 +24,7 @@ export class GridComponent {
     return this.node;
   }
 
-  public populate(children: Children): void {
+  public populate(children: GridChildren): void {
     this.node.appendChild(children.first);
 
     this.rightCol.appendChild(children.second);

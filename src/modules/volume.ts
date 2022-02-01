@@ -1,5 +1,5 @@
 import {GridComponent} from '../components/grid.component';
-import {VOLUME_LABEL_ID, VOLUME_STEP} from '../constants';
+import {VOLUME_STEP} from '../constants';
 import {InputComponent} from '../components/input.component';
 import {ButtonComponent} from '../components/button.component';
 import {SpanComponent} from '../components/span.component';
@@ -68,7 +68,6 @@ export class Volume {
 
     this.label = new SpanComponent({
       text,
-      id: VOLUME_LABEL_ID,
     });
 
     this.label.getNode().style.transform = 'translateY(4px)';
@@ -76,7 +75,6 @@ export class Volume {
 
   private createSlider() {
     this.slider = new InputComponent({
-      id: VOLUME_LABEL_ID,
       value: this.value,
     });
   }
