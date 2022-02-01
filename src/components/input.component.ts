@@ -1,6 +1,6 @@
 import {INPUT_CLASS} from '../constants';
 
-interface InputProps {
+export interface InputProps {
   value: number;
   id?: string;
   min?: number;
@@ -48,16 +48,17 @@ export class InputComponent {
     this.node.oninput = callback;
   }
 
-  public updateValue(value: number = undefined): void {
+  public updateValue(value: number): void {
     this.node.value = value.toString();
-    this.node.dispatchEvent(new Event('input'));
+    this.dispatchInputEvent();
   }
 
   public resetValue(): void {
     this.node.value = this.defaultValue.toString();
+    this.dispatchInputEvent();
   }
 
-  public getValue(): number {
-    return Number(this.node.value);
+  private dispatchInputEvent(): void {
+    this.node.dispatchEvent(new Event('input'));
   }
 }

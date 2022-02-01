@@ -1,4 +1,4 @@
-interface SpanProps {
+export interface SpanProps {
   text: string;
   id?: string;
 }
@@ -8,39 +8,32 @@ interface SpanProps {
  * Use to display text.
  */
 export class SpanComponent {
-  private node: HTMLSpanElement;
+  private readonly node: HTMLSpanElement;
 
   private id: string;
 
   private readonly defaultText: string;
 
-  constructor({
-    text,
-    id,
-  }: SpanProps) {
+  constructor({text, id}: SpanProps) {
     if (id) {
       this.id = id;
     }
 
+    this.node = document.createElement('span');
+    this.node.textContent = this.defaultText;
+
     this.defaultText = text;
-
-    this.initialize();
-  }
-
-  public update(text: string): void {
-    this.node.innerText = text;
-  }
-
-  public reset(): void {
-    this.node.innerText = this.defaultText;
   }
 
   public getNode(): HTMLSpanElement {
     return this.node;
   }
 
-  private initialize() {
-    this.node = document.createElement('node');
-    this.node.innerText = this.defaultText;
+  public update(text: string): void {
+    this.node.textContent = text;
+  }
+
+  public reset(): void {
+    this.node.textContent = this.defaultText;
   }
 }

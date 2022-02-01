@@ -4,7 +4,6 @@ import {GridComponent} from '../components/grid.component';
 import {InputComponent} from '../components/input.component';
 import {ButtonComponent} from '../components/button.component';
 import {SpanComponent} from '../components/span.component';
-import {SPEED_SLIDER_ID} from '../constants';
 import {Bandcamp} from './bandcamp';
 
 export class Speed {
@@ -88,7 +87,6 @@ export class Speed {
   private createInput() {
     this.input = new InputComponent({
       value: this.value,
-      id: SPEED_SLIDER_ID,
       min: 0.5,
       max: 1.5,
       step: 0.005,
