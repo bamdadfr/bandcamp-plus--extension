@@ -19,10 +19,10 @@ export class SpanComponent {
       this.id = id;
     }
 
+    this.defaultText = text;
+
     this.node = document.createElement('span');
     this.node.textContent = this.defaultText;
-
-    this.defaultText = text;
   }
 
   public getNode(): HTMLSpanElement {
