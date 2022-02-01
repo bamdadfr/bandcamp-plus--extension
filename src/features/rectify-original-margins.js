@@ -1,5 +1,5 @@
-import {getPlayer} from './get-player';
-import {getTracks} from './get-tracks';
+import {getPlayer} from '../utils/get-player';
+import {getTracks} from '../utils/get-tracks';
 
 /**
  * Utility function to rectify the original margins of the player and playlist.

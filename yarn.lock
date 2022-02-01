@@ -5324,6 +5324,11 @@ speed-to-percentage@^1.2.0:
   resolved "https://registry.yarnpkg.com/speed-to-percentage/-/speed-to-percentage-1.2.0.tgz#086e523558cdada6537ff29e20ed31b760d6026c"
   integrity sha512-3t6I6EF33QiRAznynRESSy+Rj1G5Rnssl7a/3ebnuihT9GaBZDpp8RyRqv2gik3WZCU8pIW22eQRt0cAbsCjIQ==
 
+speed-to-semitones@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/speed-to-semitones/-/speed-to-semitones-1.3.0.tgz#403fc966ca8a64809c47b8a2dc287ed8ac75b53c"
+  integrity sha512-CeJtvIMbGGqAkkJz4qiS1apvFzRwFFG/pAyiQjIZfAg+Rhw1rAPT6Gc3QoFTnZLsiG7rKUKePxvpAhXnT5OcYg==
+
 split2@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/split2/-/split2-4.1.0.tgz#101907a24370f85bb782f08adaabe4e281ecf809"

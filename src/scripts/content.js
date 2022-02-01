@@ -6,7 +6,7 @@ import {isPageAlbum} from '../utils/is-page-album';
 import {isPageTrack} from '../utils/is-page-track';
 import {addSpeedSlider} from '../features/add-speed-slider';
 import {isFirefox} from '../utils/is-firefox';
-import {rectifyOriginalMargins} from '../utils/rectify-original-margins';
+import {rectifyOriginalMargins} from '../features/rectify-original-margins';
 
 window.addEventListener('load', () => {
   if (isPageAlbum()) {

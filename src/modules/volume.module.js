@@ -1,7 +1,7 @@
 import {InputComponent} from '../components/input.component';
 import {SpanComponent} from '../components/span.component';
 import {getAudio} from '../utils/get-audio';
-import {VOLUME_LABEL_ID, VOLUME_SLIDER_ID, TIMEOUT} from '../constants';
+import {TIMEOUT, VOLUME_LABEL_ID, VOLUME_SLIDER_ID} from '../constants';
 import {ButtonComponent} from '../components/button.component';
 import {GridComponent} from '../components/grid.component';
 
@@ -19,7 +19,7 @@ export function VolumeModule({defaultValue}) {
 
   // label
   const label = SpanComponent({
-    value: defaultValue,
+    value: (defaultValue * 100).toFixed(0) + ' %',
     id: VOLUME_LABEL_ID,
   });
 
@@ -34,7 +34,9 @@ export function VolumeModule({defaultValue}) {
     const audio = getAudio();
 
     audio.volume = volume;
-    label.innerText = volume;
+    label.innerText = (volume * 100).toFixed(0) + ' %';
+
+    slider.style.setProperty('--ratio', volume);
   });
 
   // populate
@@ -52,7 +54,8 @@ export function VolumeModule({defaultValue}) {
 
       audio.volume = defaultValue;
       slider.value = defaultValue.toString();
-      label.innerText = defaultValue.toString();
+      label.innerText = (defaultValue * 100).toFixed(0) + ' %';
+      slider.style.setProperty('--ratio', defaultValue);
 
       title.innerText = 'Reset!';
       setTimeout(() => {
@@ -63,8 +66,17 @@ export function VolumeModule({defaultValue}) {
 
   // append
   grid.appendChild(button);
-  grid.appendChild(slider);
-  grid.appendChild(label);
+
+  const flex = document.createElement('div');
+  flex.style.display = 'flex';
+  flex.style.height = '100%';
+  flex.style.justifyContent = 'space-around';
+  flex.style.flexDirection = 'column';
+  label.style.transform = 'translateY(4px)';
+
+  flex.appendChild(label);
+  flex.appendChild(slider);
+  grid.appendChild(flex);
 
   return grid;
 }

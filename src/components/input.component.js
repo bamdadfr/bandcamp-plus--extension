@@ -1,3 +1,5 @@
+import {INPUT_CLASS} from '../constants';
+
 /**
  * Component for input fields. Used for faders, sliders, etc.
  *
@@ -17,11 +19,14 @@ export function InputComponent({
   step = 0.01,
 }) {
   const input = document.createElement('input');
+
   input.type = 'range';
   input.min = min.toString();
   input.max = max.toString();
   input.step = step.toString();
   input.value = defaultValue.toString();
+
+  input.classList.add(INPUT_CLASS);
 
   if (id) {
     input.id = id;
