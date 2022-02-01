@@ -1,3 +1,17 @@
+## [2.0.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.0...v2.0.1) (2022-02-01)
+
+
+### Bug Fixes
+
+* **Tests:** Add jest and other dependencies + Add unit tests for Components + Apply various improvements and code cleaning ([18acbbb](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/18acbbb9ea2faf6b2163f45d24cb24c7b2547fb6))
+* **Tests:** Add tests for Utils ([79091c2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/79091c24c86bff81cf02b90f3a21e0d7b6ab63d6))
+* **Volume:** Prevent button from displaying `Reset!` when value is not changed ([bc97459](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/bc974597c66c2b8371abc5cc451b33f8a1297903))
+
+
+### Performance Improvements
+
+* **Constants:** Rename file extension to `.ts` ([d308889](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/d3088896afa6a2436aebbd16d27a46f507587a98))
+
 # [2.0.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v1.5.0...v2.0.0) (2022-02-01)
 
 
