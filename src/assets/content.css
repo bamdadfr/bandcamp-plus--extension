@@ -1,0 +1,105 @@
+/**
+ * ------------------------------------------------------------
+ * Inputs
+ * ------------------------------------------------------------
+ */
+.bandcamp-plus__input {
+  margin: 0;
+  width: 250px;
+  background: transparent;
+
+  --ratio: 0.7;
+
+  --trackHeight: 10px;
+
+  --thumbWidth: 24px;
+  --thumbHeight: 12px;
+
+  --color: #fff;
+  --backgroundColor: rgba(246, 246, 246, .1);
+  --highlightColor: rgba(254, 254, 254, .1);
+  --borderColor: rgba(190, 190, 190, .5);
+}
+
+.bandcamp-plus__input, .bandcamp-plus__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+/**
+ * ------------------------------------------------------------
+ * Track
+ * ------------------------------------------------------------
+ */
+
+/**
+ * Chrome
+ */
+.bandcamp-plus__input::-webkit-slider-runnable-track {
+  box-sizing: border-box;
+  height: var(--trackHeight);
+  background: var(--backgroundColor);
+  border: 1px solid var(--borderColor);
+}
+
+.bandcamp-plus__input::-webkit-slider-runnable-track {
+  --sx: calc(var(--ratio) * 100%);
+  background: linear-gradient(var(--highlightColor), var(--highlightColor)) 0/ var(--sx) 100% no-repeat var(--backgroundColor);
+}
+
+/**
+ * Firefox
+ */
+.bandcamp-plus__input::-moz-range-track {
+  box-sizing: border-box;
+  height: var(--trackHeight);
+  background: var(--backgroundColor);
+  border: 1px solid var(--borderColor);
+}
+
+/**
+ * ------------------------------------------------------------
+ * Progress
+ * ------------------------------------------------------------
+ */
+
+/**
+ * Firefox
+ */
+.bandcamp-plus__input::-moz-range-progress {
+  height: var(--trackHeight);
+  background: var(--highlightColor);
+}
+
+/**
+ * ------------------------------------------------------------
+ * Thumbs
+ * ------------------------------------------------------------
+ */
+
+/**
+ * Chrome
+ */
+.bandcamp-plus__input::-webkit-slider-thumb {
+  box-sizing: border-box;
+  width: var(--thumbWidth);
+  height: var(--thumbHeight);
+  border-radius: 1px;
+  border: 1px solid #bebebe;
+  background: var(--color);
+  margin-top: -2px;
+  cursor: pointer;
+}
+
+/**
+ * Firefox
+ */
+.bandcamp-plus__input::-moz-range-thumb {
+  box-sizing: border-box;
+  width: var(--thumbWidth);
+  height: var(--thumbHeight);
+  border-radius: 1px;
+  border: 1px solid #bebebe;
+  background: var(--color);
+  margin-top: -2px;
+  cursor: pointer;
+}
