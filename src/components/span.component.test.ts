@@ -27,6 +27,10 @@ describe('SpanComponent', () => {
     it('should return a span element', () => {
       expect(span.getNode()).toBeInstanceOf(HTMLSpanElement);
     });
+
+    it('should display the default text', () => {
+      expect(span.getNode().textContent).toEqual(defaultProps.text);
+    });
   });
 
   describe('Method: update', () => {
