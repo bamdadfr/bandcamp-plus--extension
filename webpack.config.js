@@ -5,39 +5,45 @@ const isProduction = process.env.NODE_ENV === 'production';
 console.log('Production mode is: ', isProduction);
 
 module.exports = {
-  'watch': !isProduction,
-  'mode': isProduction ? 'production' : 'development',
-  'devtool': isProduction ? false : 'cheap-source-map',
-  'entry': {
-    'scripts/content': './src/scripts/content.js',
-    'scripts/background': './src/scripts/background.js',
+  watch: !isProduction,
+  mode: isProduction ? 'production' : 'development',
+  devtool: isProduction ? false : 'cheap-source-map',
+  entry: {
+    'scripts/content': './src/scripts/content.ts',
+    'scripts/background': './src/scripts/background.ts',
   },
-  'output': {
+  resolve: {
+    extensions: ['.ts', '.js'],
+  },
+  output: {
     'publicPath': '',
   },
-  'node': false,
-  'plugins': [
+  node: false,
+  plugins: [
     new CopyPlugin({
-      'patterns': [
+      patterns: [
         {
-          'from': './src/manifest.json',
-          'to': 'manifest.json',
+          from: './src/manifest.json',
+          to: 'manifest.json',
         },
         {
-          'from': './src/assets',
-          'to': 'assets',
+          from: './src/assets',
+          to: 'assets',
         },
       ],
     }),
   ],
-  'module': {
-    'rules': [
+  module: {
+    rules: [
       {
-        'test': /\.js$/,
-        'exclude': /node_modules/,
-        'use': {
-          'loader': 'babel-loader',
-        },
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
