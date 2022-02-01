@@ -96,6 +96,11 @@ export class Volume {
 
   private handleButton() {
     this.button.onClick('Reset!', () => {
+      const audio = Bandcamp.getAudio();
+      if (audio.volume === this.value) {
+        return;
+      }
+
       Bandcamp.setVolume(this.value);
 
       this.label.reset();
