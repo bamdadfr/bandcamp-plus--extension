@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.1...v2.0.2) (2022-02-01)
+
+
+### Bug Fixes
+
+* **SpanComponent:** Set props before interacting with the DOM ([0237acb](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/0237acb73029e0697c6b72d353ca6f7de80ab92e))
+
 ## [2.0.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.0...v2.0.1) (2022-02-01)
 
 
