@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.3...v2.0.4) (2022-02-02)
+
+
+### Performance Improvements
+
+* **Dependencies:** Upgrade to have type definitions + Remove local declaration ([38cf92d](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/38cf92d8a758fede329908494d9a13a20272061a))
+
 ## [2.0.3](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.2...v2.0.3) (2022-02-02)
 
 
