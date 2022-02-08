@@ -1,3 +1,10 @@
+## [2.0.7](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.6...v2.0.7) (2022-02-08)
+
+
+### Performance Improvements
+
+* Dummy commit to trigger semver ([6cb9da3](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/6cb9da393a71b5bbfe96eef2821895f5b61f3a5f))
+
 ## [2.0.6](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.5...v2.0.6) (2022-02-08)
 
 
