@@ -27,8 +27,7 @@ window.addEventListener('load', () => {
     const copyTrackInfo = new TrackInfo();
     Bandcamp.insertBelowPlayer(copyTrackInfo.getNode());
 
-    // eslint-disable-next-line no-new
-    new Keyboard({volume});
+    Keyboard.start({volume});
 
     Bandcamp.rectifyMargins();
   }

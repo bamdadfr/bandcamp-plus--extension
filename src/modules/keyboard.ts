@@ -17,15 +17,15 @@ type Modules = {
 }
 
 export class Keyboard {
-  private events: Record<Keys, () => void>;
+  private static events: Record<Keys, () => void>;
 
-  private eventsPreventing: Partial<Record<Keys, boolean>>;
+  private static eventsPreventing: Partial<Record<Keys, boolean>>;
 
-  private eventsWithShift: Partial<Record<Keys, () => void>>;
+  private static eventsWithShift: Partial<Record<Keys, () => void>>;
 
-  private readonly modules: Modules;
+  private static modules: Modules;
 
-  constructor(modules: Modules) {
+  public static start(modules: Modules): void {
     this.modules = modules;
     this.setEvents();
     this.setEventsWithShift();
@@ -33,7 +33,7 @@ export class Keyboard {
     this.handleKeyboard();
   }
 
-  private setEventsPreventing() {
+  private static setEventsPreventing() {
     this.eventsPreventing = {
       Space: true,
       ArrowLeft: true,
@@ -43,14 +43,14 @@ export class Keyboard {
     };
   }
 
-  private setEventsWithShift() {
+  private static setEventsWithShift() {
     this.eventsWithShift = {
       KeyP: () => Bandcamp.playFirstTrack(),
       ArrowLeft: () => Bandcamp.seekReset(),
     };
   }
 
-  private setEvents() {
+  private static setEvents() {
     this.events = {
       KeyC: async () => TrackInfo.copy(),
       Space: () => Bandcamp.getPlay().click(),
@@ -63,7 +63,7 @@ export class Keyboard {
     };
   }
 
-  private handleKeyboard() {
+  private static handleKeyboard() {
     document.addEventListener('keydown', (e) => {
       const code = e.code as Keys;
       const {shiftKey} = e;
