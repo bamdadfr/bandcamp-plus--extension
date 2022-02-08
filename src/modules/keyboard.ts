@@ -52,7 +52,7 @@ export class Keyboard {
 
   private setEvents() {
     this.events = {
-      KeyC: async () => await TrackInfo.copy(),
+      KeyC: async () => TrackInfo.copy(),
       Space: () => Bandcamp.getPlay().click(),
       KeyP: () => Bandcamp.getPrevious().click(),
       KeyN: () => Bandcamp.getNext().click(),
