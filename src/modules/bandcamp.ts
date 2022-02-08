@@ -9,7 +9,7 @@ export class Bandcamp {
   }
 
   public static getAudio(): HTMLAudioElement {
-    return document.getElementsByTagName('audio')[0] as HTMLAudioElement;
+    return document.getElementsByTagName('audio')[0];
   }
 
   public static getPlay(): HTMLDivElement {
