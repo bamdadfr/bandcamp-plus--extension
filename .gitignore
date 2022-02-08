@@ -3,3 +3,4 @@ dist/
 packages/
 .eslintcache
 coverage
+/.idea/sonarlint/issuestore/
