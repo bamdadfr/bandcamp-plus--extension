@@ -1,3 +1,10 @@
+## [2.0.6](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.5...v2.0.6) (2022-02-08)
+
+
+### Bug Fixes
+
+* **Content:** Remove duplicate property ([6d9245c](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/6d9245cc3b765610e74b2c8c97e2b1174b6237e6))
+
 ## [2.0.5](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.4...v2.0.5) (2022-02-08)
 
 
