@@ -1,3 +1,13 @@
+## [2.0.5](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.4...v2.0.5) (2022-02-08)
+
+
+### Bug Fixes
+
+* **Bandcamp:** Remove unnecessary assertion ([e15623e](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/e15623ec02021a83432fd74b65c829714f2b6752))
+* **Content:** Merge duplicate selector ([8a73678](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/8a736787b7e19bc0bb506e82ebac3f7ef28aac5e))
+* **Keyboard:** Make class static to avoid non referenced `new` use ([ca95e50](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/ca95e50bf103b80596c21ddc639fe191abfce17e))
+* **Keyboard:** Remove redundant use of `await` ([5f60ce0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/5f60ce077ee3e0342637d04bbb595f63ae5c42e7))
+
 ## [2.0.4](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.3...v2.0.4) (2022-02-02)
 
 
