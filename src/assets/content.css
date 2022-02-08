@@ -37,7 +37,6 @@
 .bandcamp-plus__input::-webkit-slider-runnable-track {
   box-sizing: border-box;
   height: var(--trackHeight);
-  background: var(--backgroundColor);
   border: 1px solid var(--borderColor);
   --sx: calc(var(--ratio) * 100%);
   background: linear-gradient(var(--highlightColor), var(--highlightColor)) 0/ var(--sx) 100% no-repeat var(--backgroundColor);
