@@ -1,3 +1,10 @@
+## [2.0.8](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.7...v2.0.8) (2022-02-10)
+
+
+### Bug Fixes
+
+* **Keyboard:** Ignore all keys with or without modifiers that should not be handled ([eebc496](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/eebc496ae5868c4ad14bec17b284b0e1ebb06a60))
+
 ## [2.0.7](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.6...v2.0.7) (2022-02-08)
 
 
