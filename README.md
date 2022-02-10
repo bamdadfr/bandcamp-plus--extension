@@ -24,7 +24,7 @@ Add multiple features to <a href="https://www.bandcamp.com/">bandcamp.com</a>
 
 **[<img height=30 src="https://icons.iconarchive.com/icons/cornmanthe3rd/plex/256/Internet-firefox-icon.png"> Firefox](https://addons.mozilla.org/firefox/addon/bandcamp)**
 
-## 📖 Features
+## 📖 Description
 
 - Track list right below the player
 - Volume slider
@@ -41,7 +41,3 @@ Add multiple features to <a href="https://www.bandcamp.com/">bandcamp.com</a>
   - `Shift + ←` seek start
   - `↑` volume up
   - `↓` volume down
-
-### Next features
-
-- Easy sharing with query parameters (current track, speed)
