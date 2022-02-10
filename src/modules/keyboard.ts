@@ -66,20 +66,26 @@ export class Keyboard {
   private static handleKeyboard() {
     document.addEventListener('keydown', (e) => {
       const code = e.code as Keys;
-      const {shiftKey} = e;
+      const {shiftKey, ctrlKey, metaKey, altKey} = e;
 
-      if (this.eventsPreventing[code]) {
-        e.preventDefault();
+      // ignore if key is not in events
+      if (Object.keys(this.events).indexOf(code) === -1) {
+        return;
       }
 
-      if (shiftKey) {
-        if (this.eventsWithShift[code]) {
-          this.eventsWithShift[code]();
+      // handle events with shift
+      if (shiftKey && this.eventsWithShift[code]) {
+        this.eventsWithShift[code]();
+        return;
+      }
+
+      // handle events with no modifier
+      if (this.events[code] && (!shiftKey && !ctrlKey && !metaKey && !altKey)) {
+        if (this.eventsPreventing[code]) {
+          e.preventDefault();
         }
-      } else {
-        if (this.events[code]) {
-          this.events[code]();
-        }
+
+        this.events[code]();
       }
     });
   }
