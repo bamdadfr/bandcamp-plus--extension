@@ -1,5 +1,5 @@
 import {Volume} from './volume';
-import {TrackInfo} from './track-info';
+import {CopyTrackInfo} from './copy-track-info';
 import {Bandcamp} from './bandcamp';
 
 type Keys =
@@ -52,7 +52,7 @@ export class Keyboard {
 
   private static setEvents() {
     this.events = {
-      KeyC: async () => TrackInfo.copy(),
+      KeyC: async () => CopyTrackInfo.copy(),
       Space: () => Bandcamp.getPlay().click(),
       KeyP: () => Bandcamp.getPrevious().click(),
       KeyN: () => Bandcamp.getNext().click(),

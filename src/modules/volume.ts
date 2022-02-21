@@ -4,32 +4,31 @@ import {InputComponent} from '../components/input.component';
 import {ButtonComponent} from '../components/button.component';
 import {SpanComponent} from '../components/span.component';
 import {Bandcamp} from './bandcamp';
+import {CopyTrackInfo} from './copy-track-info';
 
 export class Volume {
-  private readonly value: number;
-
-  private button: ButtonComponent;
-
-  private label: SpanComponent;
-
-  private slider: InputComponent;
-
   private node: GridComponent;
 
-  constructor(value: number) {
-    this.value = value;
+  private readonly defaultVolume: number = 0.7;
 
-    // elements
-    this.createButton();
-    this.createLabel();
-    this.createSlider();
+  private volumeButton: ButtonComponent;
 
-    // parent
-    this.createNode();
+  private volumeInfo: SpanComponent;
 
-    // events
-    this.handleButton();
-    this.handleSlider();
+  private volumeSlider: InputComponent;
+
+  private copyButton: CopyTrackInfo;
+
+  constructor() {
+    this.createVolumeButton();
+    this.createVolumeInfo();
+    this.createVolumeSlider();
+    this.createCopyButton();
+
+    this.handleVolumeButton();
+    this.handleVolumeSlider();
+
+    this.render();
   }
 
   private static getLabelText(value: number): string {
@@ -48,39 +47,40 @@ export class Volume {
     this.updateVolume(false);
   }
 
-  private createNode() {
+  private render() {
     this.node = new GridComponent();
     this.node.getNode().style.margin = '1em 0';
 
     this.node.populate({
-      first: this.button.getNode(),
-      second: this.label.getNode(),
-      third: this.slider.getNode(),
+      first: this.volumeButton.getNode(),
+      second: this.volumeInfo.getNode(),
+      third: this.volumeSlider.getNode(),
+      last: this.copyButton.getNode(),
     });
   }
 
-  private createButton() {
-    this.button = new ButtonComponent('Volume');
+  private createVolumeButton() {
+    this.volumeButton = new ButtonComponent('Volume');
   }
 
-  private createLabel() {
-    const text = Volume.getLabelText(this.value);
+  private createVolumeInfo() {
+    const text = Volume.getLabelText(this.defaultVolume);
 
-    this.label = new SpanComponent({
+    this.volumeInfo = new SpanComponent({
       text,
     });
 
-    this.label.getNode().style.transform = 'translateY(4px)';
+    this.volumeInfo.getNode().style.transform = 'translateY(4px)';
   }
 
-  private createSlider() {
-    this.slider = new InputComponent({
-      value: this.value,
+  private createVolumeSlider() {
+    this.volumeSlider = new InputComponent({
+      value: this.defaultVolume,
     });
   }
 
   private updateVolume(increase: boolean): void {
-    let volume = parseFloat(this.slider.getNode().value);
+    let volume = parseFloat(this.volumeSlider.getNode().value);
 
     if (increase) {
       volume += VOLUME_STEP;
@@ -88,35 +88,39 @@ export class Volume {
       volume -= VOLUME_STEP;
     }
 
-    this.label.update(Volume.getLabelText(volume));
-    this.slider.updateValue(volume);
+    this.volumeInfo.update(Volume.getLabelText(volume));
+    this.volumeSlider.updateValue(volume);
   }
 
-  private handleButton() {
-    this.button.onClick('Reset!', () => {
+  private handleVolumeButton() {
+    this.volumeButton.onClick('Reset!', () => {
       const audio = Bandcamp.getAudio();
-      if (audio.volume === this.value) {
+      if (audio.volume === this.defaultVolume) {
         return;
       }
 
-      Bandcamp.setVolume(this.value);
+      Bandcamp.setVolume(this.defaultVolume);
 
-      this.label.reset();
-      this.slider.resetValue();
-      this.slider.getNode().style.setProperty('--ratio', this.value.toString());
+      this.volumeInfo.reset();
+      this.volumeSlider.resetValue();
+      this.volumeSlider.getNode().style.setProperty('--ratio', this.defaultVolume.toString());
 
       return true;
     });
   }
 
-  private handleSlider() {
-    this.slider.onInput((e) => {
+  private handleVolumeSlider() {
+    this.volumeSlider.onInput((e) => {
       const target = e.target as HTMLInputElement;
       const volume = parseFloat(target.value);
 
       Bandcamp.setVolume(volume);
-      this.label.update(Volume.getLabelText(volume));
-      this.slider.getNode().style.setProperty('--ratio', volume.toString());
+      this.volumeInfo.update(Volume.getLabelText(volume));
+      this.volumeSlider.getNode().style.setProperty('--ratio', volume.toString());
     });
+  }
+
+  private createCopyButton() {
+    this.copyButton = new CopyTrackInfo();
   }
 }

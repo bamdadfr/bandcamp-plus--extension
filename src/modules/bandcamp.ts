@@ -4,12 +4,18 @@ import {SEEK_STEP} from '../constants';
  * Class to handle the Bandcamp module.
  */
 export class Bandcamp {
+  private static audio: HTMLAudioElement;
+
   public static getPlayer(): HTMLDivElement {
     return document.getElementsByClassName('inline_player')[0] as HTMLDivElement;
   }
 
   public static getAudio(): HTMLAudioElement {
-    return document.getElementsByTagName('audio')[0];
+    if (typeof this.audio === 'undefined') {
+      this.audio = document.getElementsByTagName('audio')[0];
+    }
+
+    return this.audio;
   }
 
   public static getPlay(): HTMLDivElement {
@@ -46,15 +52,20 @@ export class Bandcamp {
   public static setSpeed(speed: number): void {
     const audio = Bandcamp.getAudio();
 
-    if (audio.mozPreservesPitch === true) {
-      audio.mozPreservesPitch = false;
-    } else if (audio.preservesPitch === true) {
-      audio.preservesPitch = false;
-    }
-
     if (audio.playbackRate !== speed) {
       audio.playbackRate = speed;
     }
+  }
+
+  public static setMode(isStretch: boolean): void {
+    const audio = Bandcamp.getAudio();
+
+    if (typeof audio.mozPreservesPitch !== 'undefined') {
+      audio.mozPreservesPitch = isStretch;
+      return;
+    }
+
+    audio.preservesPitch = isStretch;
   }
 
   public static setVolume(volume: number): void {
@@ -104,5 +115,11 @@ export class Bandcamp {
 
     player.style.marginBottom = '1em';
     tracks.style.marginTop = '1em';
+
+    const prevCell = document.getElementsByClassName('prev_cell')[0] as HTMLTableCellElement;
+    const nextCell = document.getElementsByClassName('next_cell')[0] as HTMLTableCellElement;
+
+    prevCell.style.transform = 'translate(4px)';
+    nextCell.style.transform = 'translate(4px)';
   }
 }
