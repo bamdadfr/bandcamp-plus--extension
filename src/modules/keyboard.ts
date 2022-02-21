@@ -65,6 +65,10 @@ export class Keyboard {
 
   private static handleKeyboard() {
     document.addEventListener('keydown', (e) => {
+      if (!(e.target instanceof Element && e.target.tagName.toUpperCase() === 'BODY')) {
+        return;
+      }
+
       const code = e.code as Keys;
       const {shiftKey, ctrlKey, metaKey, altKey} = e;
 
