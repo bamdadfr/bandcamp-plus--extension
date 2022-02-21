@@ -1,5 +1,5 @@
 import {Volume} from './volume';
-import {TrackInfo} from './track-info';
+import {CopyTrackInfo} from './copy-track-info';
 import {Bandcamp} from './bandcamp';
 
 type Keys =
@@ -52,7 +52,7 @@ export class Keyboard {
 
   private static setEvents() {
     this.events = {
-      KeyC: async () => TrackInfo.copy(),
+      KeyC: async () => CopyTrackInfo.copy(),
       Space: () => Bandcamp.getPlay().click(),
       KeyP: () => Bandcamp.getPrevious().click(),
       KeyN: () => Bandcamp.getNext().click(),
@@ -65,6 +65,10 @@ export class Keyboard {
 
   private static handleKeyboard() {
     document.addEventListener('keydown', (e) => {
+      if (!(e.target instanceof Element && e.target.tagName.toUpperCase() === 'BODY')) {
+        return;
+      }
+
       const code = e.code as Keys;
       const {shiftKey, ctrlKey, metaKey, altKey} = e;
 

@@ -6,7 +6,7 @@ import {isPageAlbum} from '../utils/is-page-album';
  * Module for track info.
  * Use to get artist and title information then copy to clipboard.
  */
-export class TrackInfo {
+export class CopyTrackInfo {
   private readonly node: ButtonComponent;
 
   constructor() {
@@ -57,7 +57,7 @@ export class TrackInfo {
       'Copied!',
       () => {
         (async () => {
-          await TrackInfo.copy();
+          await CopyTrackInfo.copy();
         })();
         return true;
       },

@@ -35,13 +35,12 @@ export class ButtonComponent {
    */
   public onClick(activeText: string, callback: () => boolean): void {
     this.node.onclick = () => {
-      const shouldContinue = callback();
+      const shouldRevertText = callback();
+      this.node.textContent = activeText;
 
-      if (!shouldContinue) {
+      if (!shouldRevertText) {
         return;
       }
-
-      this.node.textContent = activeText;
 
       setTimeout(() => {
         this.node.textContent = this.defaultText;

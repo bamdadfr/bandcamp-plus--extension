@@ -1,11 +1,9 @@
 import {isPageAlbum} from '../utils/is-page-album';
 import {isPageTrack} from '../utils/is-page-track';
-import {isFirefox} from '../utils/is-firefox';
 import {Keyboard} from '../modules/keyboard';
 import {Volume} from '../modules/volume';
-import {Speed} from '../modules/speed';
-import {TrackInfo} from '../modules/track-info';
 import {Bandcamp} from '../modules/bandcamp';
+import {Speed} from '../modules/speed';
 
 window.addEventListener('load', () => {
   if (isPageAlbum()) {
@@ -16,19 +14,13 @@ window.addEventListener('load', () => {
     isPageAlbum()
     || isPageTrack()
   ) {
-    if (isFirefox()) {
-      const speed = new Speed(1);
-      Bandcamp.insertBelowPlayer(speed.getNode());
-    }
+    const speed = new Speed();
+    const volume = new Volume();
 
-    const volume = new Volume(0.7);
+    Bandcamp.insertBelowPlayer(speed.getNode());
     Bandcamp.insertBelowPlayer(volume.getNode());
-
-    const copyTrackInfo = new TrackInfo();
-    Bandcamp.insertBelowPlayer(copyTrackInfo.getNode());
+    Bandcamp.rectifyMargins();
 
     Keyboard.start({volume});
-
-    Bandcamp.rectifyMargins();
   }
 });

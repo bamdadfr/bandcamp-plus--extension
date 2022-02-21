@@ -5,40 +5,54 @@ import {InputComponent} from '../components/input.component';
 import {ButtonComponent} from '../components/button.component';
 import {SpanComponent} from '../components/span.component';
 import {Bandcamp} from './bandcamp';
+import {TIMEOUT} from '../constants';
 
 export class Speed {
-  // Default value
-  private readonly value: number;
-
   private node: GridComponent;
 
-  private button: ButtonComponent;
+  private readonly defaultSpeed: number = 1;
 
-  private input: InputComponent;
+  private speedDefaultText = 'Speed';
 
-  private labels: HTMLDivElement;
+  private speedButton: ButtonComponent;
 
-  private percentage: SpanComponent;
+  private speedSlider: InputComponent;
 
-  private semitones: SpanComponent;
+  private sliderAndInfoContainer: HTMLDivElement;
 
-  constructor(value: number) {
-    this.value = value;
+  private percentageInfo: SpanComponent;
 
-    // children
-    this.createButton();
-    this.createPercentage();
-    this.createSemitones();
-    this.createInput();
+  private semitonesInfo: SpanComponent;
 
-    // parents
-    this.createLabels();
-    this.createNode();
+  private modeButton: ButtonComponent;
+
+  constructor() {
+    // elements
+    this.speedButton = new ButtonComponent(this.speedDefaultText);
+    this.speedSlider = this.createSpeedSlider();
+
+    this.percentageInfo = this.createPercentageInfo();
+    this.semitonesInfo = this.createSemitonesInfo();
+    this.sliderAndInfoContainer = this.createLabels();
+
+    this.modeButton = new ButtonComponent('Vinyl');
 
     // events
-    this.handlePlay();
-    this.handleInput();
-    this.handleButton();
+    this.handleBandcamp();
+    this.handleSpeedButton();
+    this.handleSpeedSlider();
+    this.handleModeButton();
+
+    // render
+    this.node = new GridComponent();
+    this.node.getNode().style.margin = '1em 0';
+
+    this.node.populate({
+      first: this.speedButton.getNode(),
+      second: this.sliderAndInfoContainer,
+      third: this.speedSlider.getNode(),
+      last: this.modeButton.getNode(),
+    });
   }
 
   private static getPercentageText(value: number): string {
@@ -54,83 +68,100 @@ export class Speed {
   }
 
   private createLabels() {
-    this.labels = document.createElement('div');
-    this.labels.appendChild(this.percentage.getNode());
-    this.labels.appendChild(this.semitones.getNode());
-    this.labels.style.display = 'flex';
-    this.labels.style.width = '250px';
-    this.labels.style.justifyContent = 'space-between';
-    this.labels.style.transform = 'translateY(4px)';
+    const container = document.createElement('div');
+
+    container.style.display = 'flex';
+    container.style.width = '250px';
+    container.style.justifyContent = 'space-between';
+    container.style.transform = 'translateY(4px)';
+
+    container.appendChild(this.percentageInfo.getNode());
+    container.appendChild(this.semitonesInfo.getNode());
+
+    return container;
   }
 
-  private createNode() {
-    this.node = new GridComponent();
-    this.node.getNode().style.margin = '1em 0';
-
-    this.node.populate({
-      first: this.button.getNode(),
-      second: this.labels,
-      third: this.input.getNode(),
+  private createPercentageInfo() {
+    return new SpanComponent({
+      text: Speed.getPercentageText(this.defaultSpeed),
     });
   }
 
-  private createButton() {
-    this.button = new ButtonComponent('Speed');
-  }
-
-  private createPercentage() {
-    this.percentage = new SpanComponent({
-      text: Speed.getPercentageText(this.value),
-    });
-  }
-
-  private createInput() {
-    this.input = new InputComponent({
-      value: this.value,
+  private createSpeedSlider() {
+    return new InputComponent({
+      value: this.defaultSpeed,
       min: 0.5,
       max: 1.5,
       step: 0.005,
     });
   }
 
-  private createSemitones() {
-    this.semitones = new SpanComponent({
-      text: Speed.getSemitonesText(this.value),
+  private createSemitonesInfo() {
+    return new SpanComponent({
+      text: Speed.getSemitonesText(this.defaultSpeed),
     });
   }
 
-  private handlePlay() {
+  private handleBandcamp() {
     const audio = Bandcamp.getAudio();
+    Bandcamp.setMode(false);
 
     audio.onplay = () => {
-      const speed = parseFloat(this.input.getNode().value);
+      const speed = parseFloat(this.speedSlider.getNode().value);
       Bandcamp.setSpeed(speed);
     };
   }
 
-  private handleInput() {
-    this.input.onInput((e) => {
-      const target = e.target as HTMLInputElement;
-      const speed = parseFloat(target.value);
-      Bandcamp.setSpeed(speed);
-      this.percentage.update(Speed.getPercentageText(speed));
-      this.semitones.update(Speed.getSemitonesText(speed));
-    });
-  }
+  private handleSpeedButton() {
+    const node = this.speedButton.getNode();
 
-  private handleButton() {
-    this.button.onClick('Reset!', () => {
+    node.onclick = () => {
       const audio = Bandcamp.getAudio();
-      if (audio.playbackRate === this.value) {
+
+      if (audio.playbackRate === this.defaultSpeed) {
         return;
       }
 
-      audio.playbackRate = this.value;
-      this.input.resetValue();
-      this.percentage.reset();
-      this.semitones.reset();
+      node.textContent = 'Reset!';
+      audio.playbackRate = this.defaultSpeed;
 
-      return true;
-    });
+      this.speedSlider.resetValue();
+      this.percentageInfo.reset();
+      this.semitonesInfo.reset();
+
+      setTimeout(() => {
+        node.textContent = this.speedDefaultText;
+      }, TIMEOUT);
+    };
+  }
+
+  private handleSpeedSlider() {
+    this.speedSlider.getNode().oninput = (e) => {
+      const target = e.target as HTMLInputElement;
+      const speed = parseFloat(target.value);
+
+      Bandcamp.setSpeed(speed);
+      this.percentageInfo.update(Speed.getPercentageText(speed));
+      this.semitonesInfo.update(Speed.getSemitonesText(speed));
+    };
+  }
+
+  private handleModeButton() {
+    const node = this.modeButton.getNode();
+
+    node.onclick = () => {
+      const audio = Bandcamp.getAudio();
+      const isStretch = audio.mozPreservesPitch || audio.preservesPitch;
+
+      Bandcamp.setMode(!isStretch);
+
+      if (isStretch) {
+        node.textContent = 'Vinyl';
+        this.semitonesInfo.getNode().style.display = 'block';
+      } else {
+        node.textContent = 'Stretch';
+        this.semitonesInfo.getNode().style.display = 'none';
+      }
+    };
   }
 }

@@ -28,7 +28,7 @@ Add multiple features to <a href="https://www.bandcamp.com/">bandcamp.com</a>
 
 - Track list right below the player
 - Volume slider
-- Speed slider (only for Firefox)
+- Speed slider
 - Copy track info button
 
 ### ⌨️ Keyboard Shortcuts
