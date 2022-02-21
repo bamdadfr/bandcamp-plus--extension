@@ -48,6 +48,8 @@ export class Bandcamp {
 
     if (audio.mozPreservesPitch === true) {
       audio.mozPreservesPitch = false;
+    } else if (audio.preservesPitch === true) {
+      audio.preservesPitch = false;
     }
 
     if (audio.playbackRate !== speed) {
