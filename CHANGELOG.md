@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.1.0...v3.0.0) (2022-02-22)
+
+
+### Features
+
+* Rewrite using adapted design patterns + Add various improvements ([d6fd238](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/d6fd238dc7be64ad1483b00bfd7d3640aa4966ae))
+
+
+### BREAKING CHANGES
+
+* see [this commit](a910710cfb678880b368ccf0d545a12b5b41c4f2) for the actual file changes
+
 # [2.1.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.8...v2.1.0) (2022-02-22)
 
 
