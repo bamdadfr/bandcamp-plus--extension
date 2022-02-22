@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.0.0...v3.0.1) (2022-02-22)
+
+
+### Performance Improvements
+
+* dummy commit to test release pipeline ([cd0eb89](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/cd0eb89f8468975ab82eaef1ba979795cefbaf02))
+
 # [3.0.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.1.0...v3.0.0) (2022-02-22)
 
 
