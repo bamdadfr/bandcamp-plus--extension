@@ -44,7 +44,7 @@ export class InputComponent {
     return this.node;
   }
 
-  public onInput(callback: (e: Event) => void): void {
+  public onChange(callback: (e: Event) => void): void {
     this.node.oninput = callback;
   }
 

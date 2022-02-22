@@ -1,6 +1,6 @@
-import {Volume} from './volume';
-import {CopyTrackInfo} from './copy-track-info';
-import {Bandcamp} from './bandcamp';
+import {CopyInfoController} from './copy-info.controller';
+import {BandcampFacade} from '../facades/bandcamp.facade';
+import {VolumeController} from './volume.controller';
 
 type Keys =
   'Space'
@@ -12,21 +12,22 @@ type Keys =
   | 'ArrowLeft'
   | 'ArrowRight'
 
-type Modules = {
-  volume: Volume;
+type Controllers = {
+  volume: VolumeController;
+  copyInfo: CopyInfoController;
 }
 
-export class Keyboard {
+export class KeyboardController {
   private static events: Record<Keys, () => void>;
 
   private static eventsPreventing: Partial<Record<Keys, boolean>>;
 
   private static eventsWithShift: Partial<Record<Keys, () => void>>;
 
-  private static modules: Modules;
+  private static controllers: Controllers;
 
-  public static start(modules: Modules): void {
-    this.modules = modules;
+  public static start(controllers: Controllers): void {
+    this.controllers = controllers;
     this.setEvents();
     this.setEventsWithShift();
     this.setEventsPreventing();
@@ -45,21 +46,21 @@ export class Keyboard {
 
   private static setEventsWithShift() {
     this.eventsWithShift = {
-      KeyP: () => Bandcamp.playFirstTrack(),
-      ArrowLeft: () => Bandcamp.seekReset(),
+      KeyP: () => BandcampFacade.playFirstTrack(),
+      ArrowLeft: () => BandcampFacade.seekReset(),
     };
   }
 
   private static setEvents() {
     this.events = {
-      KeyC: async () => CopyTrackInfo.copy(),
-      Space: () => Bandcamp.getPlay().click(),
-      KeyP: () => Bandcamp.getPrevious().click(),
-      KeyN: () => Bandcamp.getNext().click(),
-      ArrowRight: () => Bandcamp.seekForward(),
-      ArrowLeft: () => Bandcamp.seekBackward(),
-      ArrowUp: () => this.modules.volume.increaseVolume(),
-      ArrowDown: () => this.modules.volume.decreaseVolume(),
+      KeyC: () => this.controllers.copyInfo.handleClick(),
+      Space: () => BandcampFacade.getPlay().click(),
+      KeyP: () => BandcampFacade.getPrevious().click(),
+      KeyN: () => BandcampFacade.getNext().click(),
+      ArrowRight: () => BandcampFacade.seekForward(),
+      ArrowLeft: () => BandcampFacade.seekBackward(),
+      ArrowUp: () => this.controllers.volume.increaseVolume(),
+      ArrowDown: () => this.controllers.volume.decreaseVolume(),
     };
   }
 

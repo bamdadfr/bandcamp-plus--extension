@@ -1,15 +1,12 @@
-import {SpanComponent, SpanProps} from './span.component';
+import {SpanComponent} from './span.component';
 
 describe('SpanComponent', () => {
   let span: SpanComponent;
-  const defaultProps: SpanProps = {
-    text: 'hello',
-    id: 'bonjour',
-  };
+  const defaultText = 'hello';
   const updateText = 'updated!!!';
 
   beforeEach(() => {
-    span = new SpanComponent({text: defaultProps.text});
+    span = new SpanComponent(defaultText);
   });
 
   describe('Props', () => {
@@ -18,7 +15,7 @@ describe('SpanComponent', () => {
     });
 
     it('should be defined when optional props are passed', () => {
-      const spanWithProps = new SpanComponent(defaultProps);
+      const spanWithProps = new SpanComponent(defaultText);
       expect(spanWithProps).toBeDefined();
     });
   });
@@ -29,22 +26,22 @@ describe('SpanComponent', () => {
     });
 
     it('should display the default text', () => {
-      expect(span.getNode().textContent).toEqual(defaultProps.text);
+      expect(span.getNode().textContent).toEqual(defaultText);
     });
   });
 
   describe('Method: update', () => {
     it('should update the text', () => {
-      span.update(updateText);
+      span.render(updateText);
       expect(span.getNode().textContent).toBe(updateText);
     });
   });
 
   describe('Method: reset', () => {
     it('should reset the text after an update', () => {
-      span.update(updateText);
+      span.render(updateText);
       span.reset();
-      expect(span.getNode().textContent).toBe(defaultProps.text);
+      expect(span.getNode().textContent).toBe(defaultText);
     });
   });
 });

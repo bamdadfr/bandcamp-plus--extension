@@ -7,10 +7,10 @@ console.log('Production mode is: ', isProduction);
 module.exports = {
   watch: !isProduction,
   mode: isProduction ? 'production' : 'development',
-  devtool: isProduction ? false : 'cheap-source-map',
+  devtool: isProduction ? false : 'inline-source-map',
   entry: {
-    'scripts/content': './src/scripts/content.ts',
-    'scripts/background': './src/scripts/background.ts',
+    'scripts/content': './src/app/content.ts',
+    'scripts/background': './src/app/background.ts',
   },
   resolve: {
     extensions: ['.ts', '.js'],

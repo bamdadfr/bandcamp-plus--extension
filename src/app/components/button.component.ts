@@ -24,32 +24,12 @@ export class ButtonComponent {
     this.applyStyles();
   }
 
-  /**
-   * Method to set the onClick event.
-   *
-   * @param {string} activeText
-   *    The text to display when the button is clicked.
-   * @param {function():boolean} callback
-   *    The callback to execute when the button is clicked.
-   *    It should return true to display the active text.
-   */
-  public onClick(activeText: string, callback: () => boolean): void {
-    this.node.onclick = () => {
-      const shouldRevertText = callback();
-      this.node.textContent = activeText;
-
-      if (!shouldRevertText) {
-        return;
-      }
-
-      setTimeout(() => {
-        this.node.textContent = this.defaultText;
-      }, this.clickTimeout);
-    };
-  }
-
   public getNode(): HTMLSpanElement {
     return this.node;
+  }
+
+  public onClick(callback: () => void): void {
+    this.node.onclick = callback;
   }
 
   /**

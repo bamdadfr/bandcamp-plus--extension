@@ -1,10 +1,10 @@
-import {GridChildren, GridComponent} from './grid.component';
+import {GridChildren, GridLayout} from './grid.layout';
 
 describe('GridComponent', () => {
-  let grid: GridComponent;
+  let grid: GridLayout;
 
   beforeEach(() => {
-    grid = new GridComponent();
+    grid = new GridLayout();
   });
 
   describe('Method: getNode', () => {
@@ -15,9 +15,10 @@ describe('GridComponent', () => {
 
   describe('Method: populate', () => {
     const children: GridChildren = {
-      first: document.createElement('span'),
-      second: document.createElement('span'),
-      third: document.createElement('input'),
+      leftButton: document.createElement('span'),
+      topContent: document.createElement('span'),
+      bottomContent: document.createElement('input'),
+      rightButton: document.createElement('span'),
     };
 
     it('should succeed', (done) => {

@@ -1,10 +1,31 @@
 import {SEEK_STEP} from '../constants';
+import {isPageTrack} from '../utils/is-page-track';
+import {isPageAlbum} from '../utils/is-page-album';
 
 /**
- * Class to handle the Bandcamp module.
+ * Class to handle the BandcampFacade module.
  */
-export class Bandcamp {
+export class BandcampFacade {
   private static audio: HTMLAudioElement;
+
+  public static getTrackInfo(): string {
+    let payload = '';
+
+    const artist = document.getElementById('name-section').children[1].children[0] as HTMLSpanElement;
+    payload += artist.innerText;
+
+    if (isPageTrack()) {
+      const trackTitle = document.getElementsByClassName('trackTitle')[0] as HTMLTitleElement;
+      payload += ` ${trackTitle.innerText}`;
+      return payload;
+    }
+
+    if (isPageAlbum()) {
+      const albumTitle = document.getElementsByClassName('title-section')[0] as HTMLSpanElement;
+      payload += ` ${albumTitle.innerText}`;
+      return payload;
+    }
+  }
 
   public static getPlayer(): HTMLDivElement {
     return document.getElementsByClassName('inline_player')[0] as HTMLDivElement;
@@ -35,30 +56,30 @@ export class Bandcamp {
   }
 
   public static seekReset(): void {
-    const audio = Bandcamp.getAudio();
+    const audio = BandcampFacade.getAudio();
     audio.currentTime = 0;
   }
 
   public static seekForward(): void {
-    const audio = Bandcamp.getAudio();
+    const audio = BandcampFacade.getAudio();
     audio.currentTime += SEEK_STEP;
   }
 
   public static seekBackward(): void {
-    const audio = Bandcamp.getAudio();
+    const audio = BandcampFacade.getAudio();
     audio.currentTime -= SEEK_STEP;
   }
 
   public static setSpeed(speed: number): void {
-    const audio = Bandcamp.getAudio();
+    const audio = BandcampFacade.getAudio();
 
     if (audio.playbackRate !== speed) {
       audio.playbackRate = speed;
     }
   }
 
-  public static setMode(isStretch: boolean): void {
-    const audio = Bandcamp.getAudio();
+  public static setStretch(isStretch: boolean): void {
+    const audio = BandcampFacade.getAudio();
 
     if (typeof audio.mozPreservesPitch !== 'undefined') {
       audio.mozPreservesPitch = isStretch;
@@ -69,7 +90,7 @@ export class Bandcamp {
   }
 
   public static setVolume(volume: number): void {
-    const audio = Bandcamp.getAudio();
+    const audio = BandcampFacade.getAudio();
 
     if (audio.volume !== volume) {
       audio.volume = volume;
@@ -77,18 +98,18 @@ export class Bandcamp {
   }
 
   public static insertBelowPlayer(element: HTMLElement): void {
-    const player = Bandcamp.getPlayer();
+    const player = BandcampFacade.getPlayer();
     player.insertAdjacentElement('afterend', element);
   }
 
   public static movePlaylist(): void {
-    const player = Bandcamp.getPlayer();
-    const tracks = Bandcamp.getTracks();
+    const player = BandcampFacade.getPlayer();
+    const tracks = BandcampFacade.getTracks();
     player.insertAdjacentElement('afterend', tracks);
   }
 
   public static playFirstTrack(): void {
-    const tracks = Bandcamp.getTracks();
+    const tracks = BandcampFacade.getTracks();
 
     const firstRow = tracks?.children[0]?.children[0] as HTMLTableRowElement;
 
@@ -110,8 +131,8 @@ export class Bandcamp {
   }
 
   public static rectifyMargins(): void {
-    const player = Bandcamp.getPlayer();
-    const tracks = Bandcamp.getTracks();
+    const player = BandcampFacade.getPlayer();
+    const tracks = BandcampFacade.getTracks();
 
     player.style.marginBottom = '1em';
     tracks.style.marginTop = '1em';

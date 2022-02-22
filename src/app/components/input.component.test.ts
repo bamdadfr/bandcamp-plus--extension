@@ -34,7 +34,7 @@ describe('InputComponent', () => {
   describe('Method: onInput', () => {
     it('should add a callback to the oninput listener', () => {
       const callback = jest.fn();
-      input.onInput(callback);
+      input.onChange(callback);
       input.getNode().dispatchEvent(new Event('input'));
       expect(callback).toHaveBeenCalled();
     });
@@ -44,7 +44,7 @@ describe('InputComponent', () => {
     it('should update the value and call onInput', () => {
       const newValue = 0.7;
       const callback = jest.fn();
-      input.onInput(callback);
+      input.onChange(callback);
       input.updateValue(newValue);
       expect(input.getNode().value).toBe(newValue.toString());
       expect(callback).toHaveBeenCalled();
@@ -55,7 +55,7 @@ describe('InputComponent', () => {
     it('should reset the value to the default and call onInput', () => {
       const newValue = 0.7;
       const callback = jest.fn();
-      input.onInput(callback);
+      input.onChange(callback);
       input.updateValue(newValue);
       input.resetValue();
       expect(input.getNode().value).toBe(defaultProps.value.toString());
