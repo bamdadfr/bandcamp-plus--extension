@@ -8,3 +8,9 @@ export const COLORS = {
   gray: '#d9d9d9',
   black: '#222222',
 };
+
+export const DEFAULT_VOLUME = 0.7;
+
+export const DEFAULT_SPEED = 1;
+
+export const DEFAULT_STRETCH = false;

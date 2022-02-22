@@ -1,8 +1,3 @@
-export interface SpanProps {
-  text: string;
-  id?: string;
-}
-
 /**
  * Class to render a span element.
  * Use to display text.
@@ -10,15 +5,9 @@ export interface SpanProps {
 export class SpanComponent {
   private readonly node: HTMLSpanElement;
 
-  private id: string;
-
   private readonly defaultText: string;
 
-  constructor({text, id}: SpanProps) {
-    if (id) {
-      this.id = id;
-    }
-
+  constructor(text: string) {
     this.defaultText = text;
 
     this.node = document.createElement('span');
@@ -29,7 +18,7 @@ export class SpanComponent {
     return this.node;
   }
 
-  public update(text: string): void {
+  public render(text: string): void {
     this.node.textContent = text;
   }
 
