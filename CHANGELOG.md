@@ -1,3 +1,16 @@
+# [2.1.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.8...v2.1.0) (2022-02-22)
+
+
+### Bug Fixes
+
+* **Keyboard:** Prevent keyboard handling if user is not on `body` ([b2ee3f3](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/b2ee3f36ad4bf1a4a1ff7953dce7487e630605ca))
+
+
+### Features
+
+* Add `stretch` mode for speed feature + Condense layout ([feb1ecc](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/feb1eccfe4a8f3e0d8cc31e31ed26b20f50bcf2d))
+* Add speed feature to chrome! ([b3080bd](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/b3080bd82edc4802f838002c57add7b3c8b1a86b))
+
 ## [2.0.8](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v2.0.7...v2.0.8) (2022-02-10)
 
 
