@@ -2,16 +2,17 @@ import {CopyInfoController} from './copy-info.controller';
 import {BandcampFacade} from '../facades/bandcamp.facade';
 import {VolumeController} from './volume.controller';
 
-type Keys =
-  'Space'
-  | 'KeyC'
-  | 'KeyP'
-  | 'KeyN'
-  | 'KeyZ'
-  | 'ArrowUp'
-  | 'ArrowDown'
-  | 'ArrowLeft'
-  | 'ArrowRight'
+enum Keys {
+  Space = ' ',
+  C = 'C',
+  P = 'P',
+  N = 'N',
+  W = 'W',
+  ArrowUp = 'ARROWUP',
+  ArrowDown = 'ARROWDOWN',
+  ArrowLeft = 'ARROWLEFT',
+  ArrowRight = 'ARROWRIGHT',
+}
 
 type Controllers = {
   volume: VolumeController;
@@ -37,32 +38,32 @@ export class KeyboardController {
 
   private static setEventsPreventing() {
     this.eventsPreventing = {
-      Space: true,
-      ArrowLeft: true,
-      ArrowRight: true,
-      ArrowDown: true,
-      ArrowUp: true,
+      [Keys.Space]: true,
+      [Keys.ArrowLeft]: true,
+      [Keys.ArrowRight]: true,
+      [Keys.ArrowDown]: true,
+      [Keys.ArrowUp]: true,
     };
   }
 
   private static setEventsWithShift() {
     this.eventsWithShift = {
-      KeyP: () => BandcampFacade.playFirstTrack(),
-      ArrowLeft: () => BandcampFacade.seekReset(),
+      [Keys.P]: () => BandcampFacade.playFirstTrack(),
+      [Keys.ArrowLeft]: () => BandcampFacade.seekReset(),
     };
   }
 
   private static setEvents() {
     this.events = {
-      KeyC: () => this.controllers.copyInfo.handleClick(),
-      Space: () => BandcampFacade.getPlay().click(),
-      KeyP: () => BandcampFacade.getPrevious().click(),
-      KeyN: () => BandcampFacade.getNext().click(),
-      KeyZ: () => BandcampFacade.toggleWishlist(),
-      ArrowRight: () => BandcampFacade.seekForward(),
-      ArrowLeft: () => BandcampFacade.seekBackward(),
-      ArrowUp: () => this.controllers.volume.increaseVolume(),
-      ArrowDown: () => this.controllers.volume.decreaseVolume(),
+      [Keys.C]: () => this.controllers.copyInfo.handleClick(),
+      [Keys.Space]: () => BandcampFacade.getPlay().click(),
+      [Keys.P]: () => BandcampFacade.getPrevious().click(),
+      [Keys.N]: () => BandcampFacade.getNext().click(),
+      [Keys.W]: () => BandcampFacade.toggleWishlist(),
+      [Keys.ArrowRight]: () => BandcampFacade.seekForward(),
+      [Keys.ArrowLeft]: () => BandcampFacade.seekBackward(),
+      [Keys.ArrowUp]: () => this.controllers.volume.increaseVolume(),
+      [Keys.ArrowDown]: () => this.controllers.volume.decreaseVolume(),
     };
   }
 
@@ -76,27 +77,27 @@ export class KeyboardController {
         return;
       }
 
-      const code = e.code as Keys;
+      const key = e.key.toUpperCase() as Keys;
       const {shiftKey, ctrlKey, metaKey, altKey} = e;
 
       // ignore if key is not in events
-      if (Object.keys(this.events).indexOf(code) === -1) {
+      if (Object.keys(this.events).indexOf(key) === -1) {
         return;
       }
 
       // handle events with shift
-      if (shiftKey && this.eventsWithShift[code]) {
-        this.eventsWithShift[code]();
+      if (shiftKey && this.eventsWithShift[key]) {
+        this.eventsWithShift[key]();
         return;
       }
 
       // handle events with no modifier
-      if (this.events[code] && (!shiftKey && !ctrlKey && !metaKey && !altKey)) {
-        if (this.eventsPreventing[code]) {
+      if (this.events[key] && (!shiftKey && !ctrlKey && !metaKey && !altKey)) {
+        if (this.eventsPreventing[key]) {
           e.preventDefault();
         }
 
-        this.events[code]();
+        this.events[key]();
       }
     });
   }
