@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.1.0...v3.1.1) (2022-04-23)
+
+
+### Bug Fixes
+
+* **Keyboard:** Use `key` prop instead of `code` to actually use the character pressed by the user (different keyboard layouts) ([a616404](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/a61640478d8a085a121bd309a96c08b96cc58947)), closes [#104](https://github.com/bamdadsabbagh/bandcamp-plus--extension/issues/104)
+
 # [3.1.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.0.1...v3.1.0) (2022-04-23)
 
 
