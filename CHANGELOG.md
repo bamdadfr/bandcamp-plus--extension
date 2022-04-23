@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.0.1...v3.1.0) (2022-04-23)
+
+
+### Features
+
+* **Keyboard:** Add toggle wishlist with `W` ([14773a0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/14773a0268efbc8e61aa9f31564e994b6fbb8473)), closes [#104](https://github.com/bamdadsabbagh/bandcamp-plus--extension/issues/104)
+
 ## [3.0.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.0.0...v3.0.1) (2022-02-22)
 
 
