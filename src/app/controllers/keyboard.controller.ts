@@ -7,6 +7,7 @@ type Keys =
   | 'KeyC'
   | 'KeyP'
   | 'KeyN'
+  | 'KeyZ'
   | 'ArrowUp'
   | 'ArrowDown'
   | 'ArrowLeft'
@@ -57,6 +58,7 @@ export class KeyboardController {
       Space: () => BandcampFacade.getPlay().click(),
       KeyP: () => BandcampFacade.getPrevious().click(),
       KeyN: () => BandcampFacade.getNext().click(),
+      KeyZ: () => BandcampFacade.toggleWishlist(),
       ArrowRight: () => BandcampFacade.seekForward(),
       ArrowLeft: () => BandcampFacade.seekBackward(),
       ArrowUp: () => this.controllers.volume.increaseVolume(),
@@ -64,9 +66,13 @@ export class KeyboardController {
     };
   }
 
+  private static isBody(target: EventTarget): boolean {
+    return target instanceof Element && target.tagName.toUpperCase() === 'BODY';
+  }
+
   private static handleKeyboard() {
     document.addEventListener('keydown', (e) => {
-      if (!(e.target instanceof Element && e.target.tagName.toUpperCase() === 'BODY')) {
+      if (!(this.isBody(e.target))) {
         return;
       }
 

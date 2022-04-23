@@ -130,6 +130,19 @@ export class BandcampFacade {
     firstPlayButton.click();
   }
 
+  public static toggleWishlist(): void {
+    const wishlist = document.querySelector('#collect-item');
+    const {className} = wishlist;
+
+    if (className.includes('wishlisted')) {
+      const el = wishlist.children[1] as HTMLSpanElement;
+      el.click();
+    } else if (className.includes('wishlist')) {
+      const el = wishlist.firstElementChild as HTMLSpanElement;
+      el.click();
+    }
+  }
+
   public static rectifyMargins(): void {
     const player = BandcampFacade.getPlayer();
     const tracks = BandcampFacade.getTracks();
