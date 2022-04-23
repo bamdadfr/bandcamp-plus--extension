@@ -51,7 +51,7 @@ export class BandcampFacade {
     return document.getElementsByClassName('nextbutton')[0] as HTMLDivElement;
   }
 
-  public static getTracks(): HTMLTableElement {
+  public static getTracks(): HTMLTableElement | null {
     return document.getElementById('track_table') as HTMLTableElement;
   }
 
@@ -111,6 +111,10 @@ export class BandcampFacade {
   public static playFirstTrack(): void {
     const tracks = BandcampFacade.getTracks();
 
+    if (!tracks) {
+      return;
+    }
+
     const firstRow = tracks?.children[0]?.children[0] as HTMLTableRowElement;
 
     if (!firstRow) {
@@ -147,8 +151,13 @@ export class BandcampFacade {
     const player = BandcampFacade.getPlayer();
     const tracks = BandcampFacade.getTracks();
 
-    player.style.marginBottom = '1em';
-    tracks.style.marginTop = '1em';
+    if (player) {
+      player.style.marginBottom = '1em';
+    }
+
+    if (tracks) {
+      tracks.style.marginTop = '1em';
+    }
 
     const prevCell = document.getElementsByClassName('prev_cell')[0] as HTMLTableCellElement;
     const nextCell = document.getElementsByClassName('next_cell')[0] as HTMLTableCellElement;
