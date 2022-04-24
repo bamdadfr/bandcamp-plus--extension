@@ -1,6 +1,4 @@
 import {SEEK_STEP} from '../constants';
-import {isPageTrack} from '../utils/is-page-track';
-import {isPageAlbum} from '../utils/is-page-album';
 
 export interface BandcampColors {
   bg_color: string;
@@ -18,10 +16,26 @@ export interface BandcampColors {
 export class BandcampFacade {
   private static audio: HTMLAudioElement;
 
+  public static get isLoggedIn(): boolean {
+    return !document.querySelector('#pagedata').getAttribute('data-blob').includes('"fan_tralbum_data":null');
+  }
+
   public static get colors(): BandcampColors {
     const style = document.querySelector('#custom-design-rules-style');
     const data = style.getAttribute('data-design');
     return JSON.parse(data);
+  }
+
+  public static get isAlbum(): boolean {
+    return /bandcamp.com\/album\//
+      .exec(window.location.href)
+      !== null;
+  }
+
+  public static get isTrack(): boolean {
+    return /bandcamp.com\/track\//
+      .exec(window.location.href)
+      !== null;
   }
 
   public static getTrackInfo(): string {
@@ -30,13 +44,13 @@ export class BandcampFacade {
     const artist = document.getElementById('name-section').children[1].children[0] as HTMLSpanElement;
     payload += artist.innerText;
 
-    if (isPageTrack()) {
+    if (this.isTrack) {
       const trackTitle = document.getElementsByClassName('trackTitle')[0] as HTMLTitleElement;
       payload += ` ${trackTitle.innerText}`;
       return payload;
     }
 
-    if (isPageAlbum()) {
+    if (this.isAlbum) {
       const albumTitle = document.getElementsByClassName('title-section')[0] as HTMLSpanElement;
       payload += ` ${albumTitle.innerText}`;
       return payload;

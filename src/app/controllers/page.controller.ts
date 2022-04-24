@@ -18,7 +18,7 @@ export class PageController {
   private currentTrackSpan = document.querySelector('#trackInfo span.title');
 
   private constructor() {
-    if (!(this.isAlbum || this.isTrack)) {
+    if (!(BandcampFacade.isAlbum || BandcampFacade.isTrack)) {
       return;
     }
 
@@ -26,25 +26,16 @@ export class PageController {
     this.volume = new VolumeController();
     this.copyInfo = new CopyInfoController();
 
-    if (this.isAlbum) {
-      this.addTracks();
-      this.observeTracks();
+    if (BandcampFacade.isAlbum) {
       BandcampFacade.movePlaylist();
     }
 
+    if (BandcampFacade.isAlbum && BandcampFacade.isLoggedIn) {
+      this.addTracks();
+      this.observeTracks();
+    }
+
     this.initAll();
-  }
-
-  public get isAlbum(): boolean {
-    return /bandcamp.com\/album\//
-      .exec(window.location.href)
-      !== null;
-  }
-
-  public get isTrack(): boolean {
-    return /bandcamp.com\/track\//
-      .exec(window.location.href)
-      !== null;
   }
 
   public static init(): PageController {
