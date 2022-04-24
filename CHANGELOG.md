@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.0...v3.2.1) (2022-04-24)
+
+
+### Bug Fixes
+
+* **Firefox:** Use `window.content.fetch` to build a successful request + Use cross-name token `ref_token` + Closes [#104](https://github.com/bamdadsabbagh/bandcamp-plus--extension/issues/104) ([5af8e9f](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/5af8e9f9fd5bf6fcb509fd787e979ed2b9ab4232))
+
 # [3.2.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.1.2...v3.2.0) (2022-04-24)
 
 
