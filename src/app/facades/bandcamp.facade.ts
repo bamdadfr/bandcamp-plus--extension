@@ -2,11 +2,27 @@ import {SEEK_STEP} from '../constants';
 import {isPageTrack} from '../utils/is-page-track';
 import {isPageAlbum} from '../utils/is-page-album';
 
+export interface BandcampColors {
+  bg_color: string;
+  body_color: string;
+  hd_ft_color: string;
+  link_color: string;
+  navbar_bg_color: string;
+  secondary_text_color: string;
+  text_color: string;
+}
+
 /**
  * Class to handle the BandcampFacade module.
  */
 export class BandcampFacade {
   private static audio: HTMLAudioElement;
+
+  public static get colors(): BandcampColors {
+    const style = document.querySelector('#custom-design-rules-style');
+    const data = style.getAttribute('data-design');
+    return JSON.parse(data);
+  }
 
   public static getTrackInfo(): string {
     let payload = '';

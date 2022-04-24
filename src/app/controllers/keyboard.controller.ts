@@ -1,6 +1,7 @@
 import {CopyInfoController} from './copy-info.controller';
 import {BandcampFacade} from '../facades/bandcamp.facade';
 import {VolumeController} from './volume.controller';
+import {TrackController} from './track.controller';
 
 enum Keys {
   Space = ' ',
@@ -28,6 +29,12 @@ export class KeyboardController {
 
   private static controllers: Controllers;
 
+  private static currentTrack: TrackController;
+
+  public static setCurrentTrack(track: TrackController): void {
+    this.currentTrack = track;
+  }
+
   public static start(controllers: Controllers): void {
     this.controllers = controllers;
     this.setEvents();
@@ -49,6 +56,11 @@ export class KeyboardController {
   private static setEventsWithShift() {
     this.eventsWithShift = {
       [Keys.P]: () => BandcampFacade.playFirstTrack(),
+      [Keys.W]: () => {
+        BandcampFacade.toggleWishlist();
+
+        // todo: set all tracks to wishlist
+      },
       [Keys.ArrowLeft]: () => BandcampFacade.seekReset(),
     };
   }
@@ -59,7 +71,13 @@ export class KeyboardController {
       [Keys.Space]: () => BandcampFacade.getPlay().click(),
       [Keys.P]: () => BandcampFacade.getPrevious().click(),
       [Keys.N]: () => BandcampFacade.getNext().click(),
-      [Keys.W]: () => BandcampFacade.toggleWishlist(),
+      [Keys.W]: () => {
+        if (!this.currentTrack) {
+          return;
+        }
+
+        this.currentTrack.view.container.click();
+      },
       [Keys.ArrowRight]: () => BandcampFacade.seekForward(),
       [Keys.ArrowLeft]: () => BandcampFacade.seekBackward(),
       [Keys.ArrowUp]: () => this.controllers.volume.increaseVolume(),
