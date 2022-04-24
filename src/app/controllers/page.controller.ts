@@ -3,71 +3,49 @@ import {GridLayout} from '../layouts/grid.layout';
 import {SpeedController} from './speed.controller';
 import {VolumeController} from './volume.controller';
 import {CopyInfoController} from './copy-info.controller';
+import {AlbumController} from './album.controller';
 import {KeyboardController} from './keyboard.controller';
-import {TrackController} from './track.controller';
+
+export interface Controllers {
+  speed: SpeedController;
+  volume: VolumeController;
+  copyInfo: CopyInfoController;
+  album: AlbumController;
+}
 
 export class PageController {
-  private speed: SpeedController;
-
-  private readonly volume: VolumeController;
-
-  private readonly copyInfo: CopyInfoController;
-
-  private tracks: TrackController[] = [];
-
-  private currentTrackSpan = document.querySelector('#trackInfo span.title');
+  private readonly controllers: Controllers;
 
   private constructor() {
-    if (!(BandcampFacade.isAlbum || BandcampFacade.isTrack)) {
+    if (!BandcampFacade.isPageSupported) {
       return;
     }
 
-    this.speed = new SpeedController();
-    this.volume = new VolumeController();
-    this.copyInfo = new CopyInfoController();
+    this.controllers = {
+      speed: new SpeedController(),
+      volume: new VolumeController(),
+      copyInfo: new CopyInfoController(),
+      album: new AlbumController(),
+    };
 
-    if (BandcampFacade.isAlbum) {
-      BandcampFacade.movePlaylist();
-    }
+    BandcampFacade.arrange();
+    this.createRows();
 
-    if (BandcampFacade.isAlbum && BandcampFacade.isLoggedIn) {
-      this.addTracks();
-      this.observeTracks();
-    }
-
-    this.initAll();
+    KeyboardController.start(this.controllers);
   }
 
   public static init(): PageController {
     return new PageController();
   }
 
-  private addTracks() {
-    const nodes = Array.from(BandcampFacade.getTracks().querySelectorAll('tr'));
-
-    nodes.forEach((node) =>
-      this.tracks.push(new TrackController(node)),
-    );
-  }
-
-  private observeTracks() {
-    const o = new MutationObserver(() => {
-      this.tracks.forEach(async (track) => {
-        await track.updateVisibility();
-      });
-    });
-
-    o.observe(this.currentTrackSpan, {childList: true});
-  }
-
   private createSpeedRow() {
     const grid = new GridLayout();
 
     grid.populate({
-      leftButton: this.speed.resetButton.node.getNode(),
-      topContent: this.speed.labels.node,
-      bottomContent: this.speed.slider.node.getNode(),
-      rightButton: this.speed.stretchButton.node.getNode(),
+      leftButton: this.controllers.speed.resetButton.node.getNode(),
+      topContent: this.controllers.speed.labels.node,
+      bottomContent: this.controllers.speed.slider.node.getNode(),
+      rightButton: this.controllers.speed.stretchButton.node.getNode(),
     });
 
     BandcampFacade.insertBelowPlayer(grid.getNode());
@@ -77,24 +55,17 @@ export class PageController {
     const container = new GridLayout();
 
     container.populate({
-      leftButton: this.volume.button.node.getNode(),
-      topContent: this.volume.label.node.getNode(),
-      bottomContent: this.volume.slider.node.getNode(),
-      rightButton: this.copyInfo.button.node.getNode(),
+      leftButton: this.controllers.volume.button.node.getNode(),
+      topContent: this.controllers.volume.label.node.getNode(),
+      bottomContent: this.controllers.volume.slider.node.getNode(),
+      rightButton: this.controllers.copyInfo.button.node.getNode(),
     });
 
     BandcampFacade.insertBelowPlayer(container.getNode());
   }
 
-  private initAll() {
+  private createRows() {
     this.createSpeedRow();
     this.createVolumeRow();
-
-    BandcampFacade.rectifyMargins();
-
-    KeyboardController.start({
-      volume: this.volume,
-      copyInfo: this.copyInfo,
-    });
   }
 }

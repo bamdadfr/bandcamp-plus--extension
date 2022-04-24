@@ -1,9 +1,12 @@
 import {TrackView} from '../views/track.view';
 import {BandcampTrackParser} from '../common/bandcamp-track-parser';
 import {KeyboardController} from './keyboard.controller';
+import {AlbumController} from './album.controller';
 
 export class TrackController {
   public view: TrackView;
+
+  private album: AlbumController;
 
   private anchor: HTMLAnchorElement;
 
@@ -19,8 +22,10 @@ export class TrackController {
 
   private isWishlisted: boolean;
 
-  constructor(node: HTMLTableRowElement) {
+  constructor(node: HTMLTableRowElement, album: AlbumController) {
     this.view = new TrackView(node);
+    this.album = album;
+
     this.anchor = this.view.node.querySelector('.title a');
     this.href = this.anchor.href;
 
@@ -42,6 +47,10 @@ export class TrackController {
     if (this.view.isPlaying) {
       KeyboardController.setCurrentTrack(this);
     }
+  }
+
+  public click(): void {
+    this.view.container.click();
   }
 
   private async toggleWishlist(): Promise<boolean> {
@@ -101,12 +110,14 @@ export class TrackController {
   }
 
   private setHoverEvents() {
-    this.view.container.onmouseenter = async () => {
+    this.view.node.addEventListener('mouseenter', async () => {
       this.view.render(true);
       await this.load();
-    };
+    });
 
-    this.view.container.onmouseleave = () => this.view.render();
+    this.view.node.addEventListener('mouseleave', () => {
+      this.view.render();
+    });
   }
 
   private setClickEvents() {

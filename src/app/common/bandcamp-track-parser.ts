@@ -1,10 +1,4 @@
-interface PageData {
-  fan_tralbum_data: {
-    band_id: number;
-    fan_id: number;
-    is_wishlisted: boolean;
-  };
-}
+import {BandcampData} from '../facades/bandcamp.facade';
 
 interface MetaContent {
   item_id: number;
@@ -40,7 +34,7 @@ export class BandcampTrackParser {
 
   private string: string;
 
-  private json: PageData;
+  private json: BandcampData;
 
   private meta: HTMLMetaElement;
 

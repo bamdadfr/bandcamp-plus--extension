@@ -60,6 +60,7 @@ export class TrackView {
     this.container.appendChild(container);
 
     this.container.style.transform = 'translate3d(0,-2px,0)';
+    this.container.tabIndex = -1;
 
     this.node.insertBefore(this.container, this.node.lastElementChild);
   }
