@@ -24,12 +24,13 @@ Add multiple features to <a href="https://www.bandcamp.com/">bandcamp.com</a>
 
 **[<img height=30 src="https://icons.iconarchive.com/icons/cornmanthe3rd/plex/256/Internet-firefox-icon.png"> Firefox](https://addons.mozilla.org/firefox/addon/bandcamp)**
 
-## 📖 Description
+## 📖 Features
 
-- Track list right below the player
-- Volume slider
-- Speed slider
-- Copy track info button
+- Arrange Bandcamp layout
+- Wishlist single tracks from release page
+- Add volume control
+- Add speed control with vinyl and stretched modes
+- Copy track info to clipboard
 
 ### ⌨️ Keyboard Shortcuts
 
