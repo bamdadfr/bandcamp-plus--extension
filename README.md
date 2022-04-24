@@ -16,7 +16,7 @@
 
 Add multiple features to <a href="https://www.bandcamp.com/">bandcamp.com</a>
 
-![](assets/screenshots/screenshot-01.png)
+![](assets/screenshots/screenshot.png)
 
 ## 🚀 Download
 
