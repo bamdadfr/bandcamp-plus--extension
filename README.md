@@ -36,27 +36,22 @@ Add multiple features to <a href="https://www.bandcamp.com/">bandcamp.com</a>
 
 - `Space` play/pause
 - `C` copy track info
-
-
+-
 - `W` wishlist current track
 - `Shift + W` wishlist release
-
-
+-
 - `N` next track
 - `P` previous track
 - `Shift + P` play first track
-
-
+-
 - `→` seek 10 sec forward
 - `←` seek 10 sec backward
 - `Shift + ←` seek start
-
-
+-
 - `↑` increase volume
 - `↓` decrease volume
 - `R` reset volume
-
-
+-
 - `Shift + ↑` increase speed
 - `Shift + ↓` decrease speed
 - `Shift + R` reset speed
