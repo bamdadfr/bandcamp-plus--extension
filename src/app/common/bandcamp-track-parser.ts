@@ -72,12 +72,15 @@ export class BandcampTrackParser {
     this.collectCrumb = this.crumbsData.collect_item_cb;
     this.uncollectCrumb = this.crumbsData.uncollect_item_cb;
 
+    const token = JSON.parse(document.querySelector('script[data-referrer-token]').getAttribute('data-referrer-token'));
+
     this.collect = new URLSearchParams({
       fan_id: this.fan_id.toString(),
-      band_id: this.band_id.toString(),
       item_id: this.item_id.toString(),
       item_type: this.item_type.toString(),
-      data_referrer_token: this.data_referrer_token.toString(),
+      band_id: this.band_id.toString(),
+      // data_referrer_token: this.data_referrer_token.toString(),
+      ref_token: token,
       crumb: this.collectCrumb.toString(),
     }).toString();
 
@@ -86,7 +89,8 @@ export class BandcampTrackParser {
       band_id: this.band_id.toString(),
       item_id: this.item_id.toString(),
       item_type: this.item_type.toString(),
-      data_referrer_token: this.data_referrer_token.toString(),
+      // data_referrer_token: this.data_referrer_token.toString(),
+      ref_token: token,
       crumb: this.uncollectCrumb.toString(),
     }).toString();
   }

@@ -57,10 +57,12 @@ export class TrackController {
     try {
       const host = window.location.host;
       const endpoint = this.isWishlisted ? 'uncollect_item_cb' : 'collect_item_cb';
+      const url = `https://${host}/${endpoint}`;
       const body = this.isWishlisted ? this.meta.uncollect : this.meta.collect;
+      const f = window?.content?.fetch ?? fetch;
 
-      const request = await fetch(
-        `https://${host}/${endpoint}`,
+      const request = await f(
+        url,
         {
           method: 'POST',
           headers: {
