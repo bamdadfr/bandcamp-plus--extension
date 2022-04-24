@@ -1,6 +1,6 @@
 import {SpeedResetButtonView} from '../views/speed-reset-button.view';
 import {AbstractSubject} from '../common/abstract.subject';
-import {DEFAULT_SPEED, DEFAULT_STRETCH} from '../constants';
+import {DEFAULT_SPEED, DEFAULT_STRETCH, SPEED_STEP} from '../constants';
 import {BandcampFacade} from '../facades/bandcamp.facade';
 import {SpeedSliderView} from '../views/speed-slider.view';
 import {SpeedLabelsView} from '../views/speed-labels.view';
@@ -34,15 +34,25 @@ export class SpeedController extends AbstractSubject {
     this.initializePlayer();
   }
 
-  public handleButtonClick(): void {
-    const audio = BandcampFacade.getAudio();
+  public increase(): void {
+    this.setSpeed(this.speed + SPEED_STEP);
+  }
 
-    if (audio.playbackRate === DEFAULT_SPEED) {
+  public decrease(): void {
+    this.setSpeed(this.speed - SPEED_STEP);
+  }
+
+  public reset(): void {
+    if (BandcampFacade.audio.playbackRate === DEFAULT_SPEED) {
       return;
     }
 
     this.setSpeed(DEFAULT_SPEED);
     this.resetButton.renderClick();
+  }
+
+  public handleButtonClick(): void {
+    this.reset();
   }
 
   public handleSliderChange(e: Event): void {
@@ -53,7 +63,7 @@ export class SpeedController extends AbstractSubject {
   }
 
   public handleStretchButtonClick(): void {
-    const audio = BandcampFacade.getAudio();
+    const audio = BandcampFacade.audio;
     const isStretch = audio.mozPreservesPitch || audio.preservesPitch;
 
     this.setStretch(!isStretch);
@@ -65,7 +75,7 @@ export class SpeedController extends AbstractSubject {
     this.setStretch(DEFAULT_STRETCH);
 
     // set the speed whenever the play event is triggered
-    const audio = BandcampFacade.getAudio();
+    const audio = BandcampFacade.audio;
     audio.onplay = () => {
       BandcampFacade.setSpeed(this.speed);
       BandcampFacade.setStretch(this.isStretch);

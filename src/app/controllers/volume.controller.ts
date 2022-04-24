@@ -23,14 +23,7 @@ export class VolumeController extends AbstractSubject {
   }
 
   public handleButtonClick(): void {
-    const audio = BandcampFacade.getAudio();
-
-    if (audio.volume === DEFAULT_VOLUME) {
-      return;
-    }
-
-    this.setVolume(DEFAULT_VOLUME);
-    this.button.renderClick();
+    this.reset();
   }
 
   public handleSliderChange(e: Event): void {
@@ -40,12 +33,21 @@ export class VolumeController extends AbstractSubject {
     this.setVolume(volume);
   }
 
-  public increaseVolume(): void {
+  public increase(): void {
     this.setVolume(this.volume + VOLUME_STEP);
   }
 
-  public decreaseVolume(): void {
+  public decrease(): void {
     this.setVolume(this.volume - VOLUME_STEP);
+  }
+
+  public reset(): void {
+    if (BandcampFacade.audio.volume === DEFAULT_VOLUME) {
+      return;
+    }
+
+    this.setVolume(DEFAULT_VOLUME);
+    this.button.renderClick();
   }
 
   private setVolume(v: number) {

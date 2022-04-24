@@ -1,12 +1,99 @@
 import {SEEK_STEP} from '../constants';
-import {isPageTrack} from '../utils/is-page-track';
-import {isPageAlbum} from '../utils/is-page-album';
+
+export interface BandcampColors {
+  bg_color: string;
+  body_color: string;
+  hd_ft_color: string;
+  link_color: string;
+  navbar_bg_color: string;
+  secondary_text_color: string;
+  text_color: string;
+}
+
+export interface BandcampData {
+  fan_tralbum_data: {
+    band_id: number;
+    fan_id: number;
+    is_wishlisted: boolean;
+  };
+}
+
+export enum BandcampWishlistState {
+  NotLiked = 'wishlist',
+  Liked = 'wishlisted',
+}
 
 /**
  * Class to handle the BandcampFacade module.
  */
 export class BandcampFacade {
-  private static audio: HTMLAudioElement;
+  private static _data: BandcampData;
+
+  public static get data(): BandcampData {
+    if (typeof this._data === 'undefined') {
+      const container = document.getElementById('pagedata');
+      this._data = JSON.parse(container.dataset.blob);
+    }
+
+    return this._data;
+  }
+
+  private static _audio: HTMLAudioElement;
+
+  public static get audio(): HTMLAudioElement {
+    if (typeof this._audio === 'undefined') {
+      this._audio = document.getElementsByTagName('audio')[0];
+    }
+
+    return this._audio;
+  }
+
+  public static get isPageSupported(): boolean {
+    return BandcampFacade.isAlbum || BandcampFacade.isTrack;
+  }
+
+  public static get isLoggedIn(): boolean {
+    return !document.querySelector('#pagedata').getAttribute('data-blob').includes('"fan_tralbum_data":null');
+  }
+
+  public static get currentTrackContainer(): HTMLSpanElement {
+    return document.querySelector('#trackInfo span.title');
+  }
+
+  public static get colors(): BandcampColors {
+    const style = document.querySelector('#custom-design-rules-style');
+    const data = style.getAttribute('data-design');
+    return JSON.parse(data);
+  }
+
+  public static get isAlbum(): boolean {
+    return /bandcamp.com\/album\//
+      .exec(window.location.href)
+      !== null;
+  }
+
+  public static get isTrack(): boolean {
+    return /bandcamp.com\/track\//
+      .exec(window.location.href)
+      !== null;
+  }
+
+  public static get trackTable(): HTMLTableElement | null {
+    return document.getElementById('track_table') as HTMLTableElement;
+  }
+
+  public static get tracks(): HTMLTableRowElement[] {
+    const tracks = this.trackTable.querySelectorAll('tr');
+    return Array.from(tracks);
+  }
+
+  public static get player(): HTMLDivElement {
+    return document.getElementsByClassName('inline_player')[0] as HTMLDivElement;
+  }
+
+  public static get wishlistButton(): HTMLLIElement {
+    return document.getElementById('collect-item') as HTMLLIElement;
+  }
 
   public static getTrackInfo(): string {
     let payload = '';
@@ -14,29 +101,22 @@ export class BandcampFacade {
     const artist = document.getElementById('name-section').children[1].children[0] as HTMLSpanElement;
     payload += artist.innerText;
 
-    if (isPageTrack()) {
+    if (this.isTrack) {
       const trackTitle = document.getElementsByClassName('trackTitle')[0] as HTMLTitleElement;
       payload += ` ${trackTitle.innerText}`;
       return payload;
     }
 
-    if (isPageAlbum()) {
+    if (this.isAlbum) {
       const albumTitle = document.getElementsByClassName('title-section')[0] as HTMLSpanElement;
       payload += ` ${albumTitle.innerText}`;
       return payload;
     }
   }
 
-  public static getPlayer(): HTMLDivElement {
-    return document.getElementsByClassName('inline_player')[0] as HTMLDivElement;
-  }
-
-  public static getAudio(): HTMLAudioElement {
-    if (typeof this.audio === 'undefined') {
-      this.audio = document.getElementsByTagName('audio')[0];
-    }
-
-    return this.audio;
+  public static arrange(): void {
+    this.movePlaylist();
+    this.rectifyMargins();
   }
 
   public static getPlay(): HTMLDivElement {
@@ -51,65 +131,56 @@ export class BandcampFacade {
     return document.getElementsByClassName('nextbutton')[0] as HTMLDivElement;
   }
 
-  public static getTracks(): HTMLTableElement | null {
-    return document.getElementById('track_table') as HTMLTableElement;
-  }
-
   public static seekReset(): void {
-    const audio = BandcampFacade.getAudio();
-    audio.currentTime = 0;
+    this.audio.currentTime = 0;
   }
 
   public static seekForward(): void {
-    const audio = BandcampFacade.getAudio();
-    audio.currentTime += SEEK_STEP;
+    this.audio.currentTime += SEEK_STEP;
   }
 
   public static seekBackward(): void {
-    const audio = BandcampFacade.getAudio();
-    audio.currentTime -= SEEK_STEP;
+    this.audio.currentTime -= SEEK_STEP;
   }
 
   public static setSpeed(speed: number): void {
-    const audio = BandcampFacade.getAudio();
-
-    if (audio.playbackRate !== speed) {
-      audio.playbackRate = speed;
+    if (this.audio.playbackRate !== speed) {
+      this.audio.playbackRate = speed;
     }
   }
 
   public static setStretch(isStretch: boolean): void {
-    const audio = BandcampFacade.getAudio();
-
-    if (typeof audio.mozPreservesPitch !== 'undefined') {
-      audio.mozPreservesPitch = isStretch;
+    if (typeof this.audio.mozPreservesPitch !== 'undefined') {
+      this.audio.mozPreservesPitch = isStretch;
       return;
     }
 
-    audio.preservesPitch = isStretch;
+    this.audio.preservesPitch = isStretch;
   }
 
   public static setVolume(volume: number): void {
-    const audio = BandcampFacade.getAudio();
-
-    if (audio.volume !== volume) {
-      audio.volume = volume;
+    if (this.audio.volume !== volume) {
+      this.audio.volume = volume;
     }
   }
 
   public static insertBelowPlayer(element: HTMLElement): void {
-    const player = BandcampFacade.getPlayer();
+    const player = BandcampFacade.player;
     player.insertAdjacentElement('afterend', element);
   }
 
   public static movePlaylist(): void {
-    const player = BandcampFacade.getPlayer();
-    const tracks = BandcampFacade.getTracks();
+    if (!this.isAlbum) {
+      return;
+    }
+
+    const player = BandcampFacade.player;
+    const tracks = BandcampFacade.trackTable;
     player.insertAdjacentElement('afterend', tracks);
   }
 
   public static playFirstTrack(): void {
-    const tracks = BandcampFacade.getTracks();
+    const tracks = BandcampFacade.trackTable;
 
     if (!tracks) {
       return;
@@ -135,21 +206,20 @@ export class BandcampFacade {
   }
 
   public static toggleWishlist(): void {
-    const wishlist = document.querySelector('#collect-item');
-    const {className} = wishlist;
+    const {className} = this.wishlistButton;
 
-    if (className.includes('wishlisted')) {
-      const el = wishlist.children[1] as HTMLSpanElement;
+    if (className === BandcampWishlistState.Liked) {
+      const el = this.wishlistButton.children[1] as HTMLSpanElement;
       el.click();
-    } else if (className.includes('wishlist')) {
-      const el = wishlist.firstElementChild as HTMLSpanElement;
+    } else if (className === BandcampWishlistState.NotLiked) {
+      const el = this.wishlistButton.firstElementChild as HTMLSpanElement;
       el.click();
     }
   }
 
   public static rectifyMargins(): void {
-    const player = BandcampFacade.getPlayer();
-    const tracks = BandcampFacade.getTracks();
+    const player = BandcampFacade.player;
+    const tracks = BandcampFacade.trackTable;
 
     if (player) {
       player.style.marginBottom = '1em';

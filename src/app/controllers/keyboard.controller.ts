@@ -1,6 +1,6 @@
-import {CopyInfoController} from './copy-info.controller';
 import {BandcampFacade} from '../facades/bandcamp.facade';
-import {VolumeController} from './volume.controller';
+import {TrackController} from './track.controller';
+import {Controllers} from './page.controller';
 
 enum Keys {
   Space = ' ',
@@ -8,15 +8,11 @@ enum Keys {
   P = 'P',
   N = 'N',
   W = 'W',
+  R = 'R',
   ArrowUp = 'ARROWUP',
   ArrowDown = 'ARROWDOWN',
   ArrowLeft = 'ARROWLEFT',
   ArrowRight = 'ARROWRIGHT',
-}
-
-type Controllers = {
-  volume: VolumeController;
-  copyInfo: CopyInfoController;
 }
 
 export class KeyboardController {
@@ -27,6 +23,12 @@ export class KeyboardController {
   private static eventsWithShift: Partial<Record<Keys, () => void>>;
 
   private static controllers: Controllers;
+
+  private static currentTrack: TrackController;
+
+  public static setCurrentTrack(track: TrackController): void {
+    this.currentTrack = track;
+  }
 
   public static start(controllers: Controllers): void {
     this.controllers = controllers;
@@ -49,7 +51,11 @@ export class KeyboardController {
   private static setEventsWithShift() {
     this.eventsWithShift = {
       [Keys.P]: () => BandcampFacade.playFirstTrack(),
+      [Keys.W]: () => this.toggleWishlistRelease(),
+      [Keys.R]: () => this.controllers.speed.reset(),
       [Keys.ArrowLeft]: () => BandcampFacade.seekReset(),
+      [Keys.ArrowUp]: () => this.controllers.speed.increase(),
+      [Keys.ArrowDown]: () => this.controllers.speed.decrease(),
     };
   }
 
@@ -59,12 +65,29 @@ export class KeyboardController {
       [Keys.Space]: () => BandcampFacade.getPlay().click(),
       [Keys.P]: () => BandcampFacade.getPrevious().click(),
       [Keys.N]: () => BandcampFacade.getNext().click(),
-      [Keys.W]: () => BandcampFacade.toggleWishlist(),
+      [Keys.R]: () => this.controllers.volume.reset(),
+      [Keys.W]: () => this.toggleWishlistTrack(),
       [Keys.ArrowRight]: () => BandcampFacade.seekForward(),
       [Keys.ArrowLeft]: () => BandcampFacade.seekBackward(),
-      [Keys.ArrowUp]: () => this.controllers.volume.increaseVolume(),
-      [Keys.ArrowDown]: () => this.controllers.volume.decreaseVolume(),
+      [Keys.ArrowUp]: () => this.controllers.volume.increase(),
+      [Keys.ArrowDown]: () => this.controllers.volume.decrease(),
     };
+  }
+
+  private static toggleWishlistRelease() {
+    BandcampFacade.toggleWishlist();
+  }
+
+  private static toggleWishlistTrack() {
+    // fallback if current page is a track
+    if (BandcampFacade.isTrack) {
+      this.toggleWishlistRelease();
+      return;
+    }
+
+    if (BandcampFacade.isAlbum && this.currentTrack) {
+      this.currentTrack.click();
+    }
   }
 
   private static isBody(target: EventTarget): boolean {
