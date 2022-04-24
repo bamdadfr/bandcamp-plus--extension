@@ -1,3 +1,17 @@
+# [3.2.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.1.2...v3.2.0) (2022-04-24)
+
+
+### Bug Fixes
+
+* **Album:** Prevent any action if user is not logged in ([56405d1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/56405d1ca9e9764a5e425ffedb6913ba36b5862e))
+* Prevent new wishlist feature to be initialized if user is not logged in + Various code merge and clean ([9d6d98e](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/9d6d98e0549d9fb31bba5fc72c89934648aabddb))
+
+
+### Features
+
+* Add `R`, `Shift + R`, `Shift + ↑` and `Shift + ↓` keyboard bindings + Improve code separation and readability ([168d5ad](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/168d5ad18eb5b6b78e4bf0df96532cdd78066a4e))
+* User can add a single track to wishlist from an album page, very raw solution at the moment + Move startup script to its own class ([57aa4b5](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/57aa4b5d83ca20136f11e0bcaec47c9af429ad83)), closes [#104](https://github.com/bamdadsabbagh/bandcamp-plus--extension/issues/104)
+
 ## [3.1.2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.1.1...v3.1.2) (2022-04-24)
 
 
