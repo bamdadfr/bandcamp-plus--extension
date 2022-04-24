@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.1.1...v3.1.2) (2022-04-24)
+
+
+### Bug Fixes
+
+* **Bandcamp:** Verify element existence before applying rules ([8c293e1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/8c293e1ab73ef69f89ee313c171cd75d0821afb2))
+
 ## [3.1.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.1.0...v3.1.1) (2022-04-23)
 
 
