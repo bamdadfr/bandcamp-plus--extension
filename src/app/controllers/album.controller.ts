@@ -8,7 +8,7 @@ import {observeElement} from '../utils/observe-element';
 export class AlbumController {
   private tracks: TrackController[] = [];
 
-  private isLiked = BandcampFacade.data.fan_tralbum_data.is_wishlisted;
+  private isLiked: boolean;
 
   private button = BandcampFacade.wishlistButton;
 
@@ -16,6 +16,8 @@ export class AlbumController {
     if (!(BandcampFacade.isLoggedIn && BandcampFacade.isAlbum)) {
       return;
     }
+
+    this.isLiked = BandcampFacade.data.fan_tralbum_data.is_wishlisted;
 
     this.observeButton();
     this.addTracks();
