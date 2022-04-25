@@ -30,20 +30,68 @@ export class BandcampFacade {
   private static _data: BandcampData;
 
   public static get data(): BandcampData {
-    if (typeof this._data === 'undefined') {
-      const container = document.getElementById('pagedata');
-      this._data = JSON.parse(container.dataset.blob);
+    if (this._data) {
+      return this._data;
     }
 
+    const container = document.getElementById('pagedata');
+    this._data = JSON.parse(container.dataset.blob);
+
     return this._data;
+  }
+
+  private static _isTrack: boolean;
+
+  public static get isTrack(): boolean {
+    if (this._isTrack) {
+      return this._isTrack;
+    }
+
+    this._isTrack = /bandcamp.com\/track\//
+      .exec(window.location.href)
+      !== null;
+
+    return this._isTrack;
+  }
+
+  private static _isAlbum: boolean;
+
+  public static get isAlbum(): boolean {
+    if (this._isAlbum) {
+      return this._isAlbum;
+    }
+
+    this._isAlbum = /bandcamp.com\/album\//
+      .exec(window.location.href)
+      !== null;
+
+    return this._isAlbum;
+  }
+
+  private static _colors: BandcampColors;
+
+  public static get colors(): BandcampColors {
+    if (this._colors) {
+      return this._colors;
+    }
+
+    const data = document
+      .getElementById('custom-design-rules-style')
+      .getAttribute('data-design');
+
+    this._colors = JSON.parse(data);
+
+    return this._colors;
   }
 
   private static _audio: HTMLAudioElement;
 
   public static get audio(): HTMLAudioElement {
-    if (typeof this._audio === 'undefined') {
-      this._audio = document.getElementsByTagName('audio')[0];
+    if (this._audio) {
+      return this._audio;
     }
+
+    this._audio = document.getElementsByTagName('audio')[0];
 
     return this._audio;
   }
@@ -53,29 +101,11 @@ export class BandcampFacade {
   }
 
   public static get isLoggedIn(): boolean {
-    return !document.querySelector('#pagedata').getAttribute('data-blob').includes('"fan_tralbum_data":null');
+    return !document.getElementById('pagedata').getAttribute('data-blob').includes('"fan_tralbum_data":null');
   }
 
   public static get currentTrackContainer(): HTMLSpanElement {
     return document.querySelector('#trackInfo span.title');
-  }
-
-  public static get colors(): BandcampColors {
-    const style = document.querySelector('#custom-design-rules-style');
-    const data = style.getAttribute('data-design');
-    return JSON.parse(data);
-  }
-
-  public static get isAlbum(): boolean {
-    return /bandcamp.com\/album\//
-      .exec(window.location.href)
-      !== null;
-  }
-
-  public static get isTrack(): boolean {
-    return /bandcamp.com\/track\//
-      .exec(window.location.href)
-      !== null;
   }
 
   public static get trackTable(): HTMLTableElement | null {
