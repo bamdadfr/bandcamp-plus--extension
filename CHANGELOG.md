@@ -1,3 +1,15 @@
+## [3.2.2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.1...v3.2.2) (2022-04-25)
+
+
+### Bug Fixes
+
+* **Heart:** Inject dynamic fill color to ensure contrast ratio ([526e06e](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/526e06e82faf7c0545fd3678cb04b90c52cd8667))
+
+
+### Performance Improvements
+
+* **Bandcamp:** Reduce expense of DOM traversals by returning stored values ([b9c39c9](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/b9c39c9a8a306829115903f2e5d369d2d5b0a301))
+
 ## [3.2.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.0...v3.2.1) (2022-04-24)
 
 
