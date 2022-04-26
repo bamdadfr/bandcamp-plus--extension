@@ -1,4 +1,5 @@
-import {COLORS, TIMEOUT} from '../constants';
+import {TIMEOUT} from '../constants';
+import {Colors} from '../common/colors';
 
 /**
  * Class to represent a button.
@@ -44,9 +45,9 @@ export class ButtonComponent {
     this.node.style.height = '50px';
 
     this.node.style.fontWeight = 'bold';
-    this.node.style.color = COLORS.black;
-    this.node.style.background = COLORS.white;
-    this.node.style.border = `1px solid ${COLORS.gray}`;
+    this.node.style.color = Colors.theme.black;
+    this.node.style.background = Colors.theme.white;
+    this.node.style.border = `1px solid ${Colors.theme.gray}`;
 
     this.node.style.userSelect = 'none';
     this.node.style.cursor = 'pointer';
