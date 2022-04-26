@@ -1,4 +1,4 @@
-import {SEEK_STEP} from '../constants';
+import {SEEK_STEP, TIMEOUT} from '../constants';
 
 export interface BandcampColors {
   bg_color: string;
@@ -75,11 +75,14 @@ export class BandcampFacade {
       return this._colors;
     }
 
-    const data = document
-      .getElementById('custom-design-rules-style')
-      .getAttribute('data-design');
+    const node = document.getElementById('custom-design-rules-style');
 
-    this._colors = JSON.parse(data);
+    if (!node) {
+      setTimeout(() => this.colors, TIMEOUT);
+      return;
+    }
+
+    this._colors = JSON.parse(node.getAttribute('data-design'));
 
     return this._colors;
   }

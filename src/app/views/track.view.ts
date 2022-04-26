@@ -3,13 +3,24 @@ import {HeartComponent} from '../components/heart.component';
 export class TrackView {
   public node: HTMLTableRowElement;
 
-  public container: HTMLTableCellElement;
+  public container: HTMLDivElement;
 
   private icon: HeartComponent;
 
+  private target: HTMLTableRowElement;
+
+  private infoLink: HTMLDivElement;
+
   constructor(node: HTMLTableRowElement) {
     this.node = node;
+    this.target = this.node.querySelector('.info-col');
+    this.infoLink = this.target.querySelector('.info_link');
+
+    this.applyTargetStyles();
+
     this.createIcon();
+    this.applyIconStyles();
+
     this.render();
   }
 
@@ -51,17 +62,20 @@ export class TrackView {
   }
 
   private createIcon() {
-    this.container = document.createElement('td');
-
-    const container = document.createElement('div');
+    this.container = document.createElement('div');
     this.icon = new HeartComponent();
 
-    container.appendChild(this.icon.node);
-    this.container.appendChild(container);
+    this.container.appendChild(this.icon.node);
 
-    this.container.style.transform = 'translate3d(0,-2px,0)';
+    this.target.insertBefore(this.container, this.target.lastElementChild);
+  }
+
+  private applyTargetStyles() {
+    this.infoLink.style.visibility = 'hidden';
+  }
+
+  private applyIconStyles() {
     this.container.tabIndex = -1;
-
-    this.node.insertBefore(this.container, this.node.lastElementChild);
+    this.container.style.transform = 'translate3d(20px,-2px,0)';
   }
 }
