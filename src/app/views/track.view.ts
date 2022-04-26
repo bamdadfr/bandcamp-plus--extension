@@ -9,11 +9,18 @@ export class TrackView {
 
   private target: HTMLTableRowElement;
 
+  private infoLink: HTMLDivElement;
+
   constructor(node: HTMLTableRowElement) {
     this.node = node;
-    this.target = this.node.querySelector('.download-col');
+    this.target = this.node.querySelector('.info-col');
+    this.infoLink = this.target.querySelector('.info_link');
+
+    this.applyTargetStyles();
+
     this.createIcon();
-    this.applyStyles();
+    this.applyIconStyles();
+
     this.render();
   }
 
@@ -63,8 +70,12 @@ export class TrackView {
     this.target.insertBefore(this.container, this.target.lastElementChild);
   }
 
-  private applyStyles() {
-    this.container.style.transform = 'translate3d(-20px,-2px,0)';
+  private applyTargetStyles() {
+    this.infoLink.style.visibility = 'hidden';
+  }
+
+  private applyIconStyles() {
     this.container.tabIndex = -1;
+    this.container.style.transform = 'translate3d(20px,-2px,0)';
   }
 }
