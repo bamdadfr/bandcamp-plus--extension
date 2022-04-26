@@ -27,6 +27,11 @@ export class TrackController {
     this.album = album;
 
     this.anchor = this.view.node.querySelector('.title a');
+
+    if (!this.anchor) {
+      return;
+    }
+
     this.href = this.anchor.href;
 
     this.setHoverEvents();
