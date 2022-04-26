@@ -1,3 +1,13 @@
+## [3.2.3](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.2...v3.2.3) (2022-04-26)
+
+
+### Bug Fixes
+
+* **Colors:** Check for the contrast for fill color ([4423f63](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/4423f63491fed2ba93df76937312d91478dc86fc))
+* **Track:** Add translation to the left to prevent overlap with buy link ([839d55c](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/839d55c1b8d130b348c8caedfca1c62a79760039))
+* **Track:** Ignore tracks without links ([5d79e43](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/5d79e439b1b693acd6e016a2470bcb484b5935dc))
+* **Track:** Improve wishlist icon position ([c8743cd](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/c8743cd3e5d2f242dc7db1a4b72386124fddb244))
+
 ## [3.2.2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.1...v3.2.2) (2022-04-25)
 
 
