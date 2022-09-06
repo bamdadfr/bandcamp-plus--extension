@@ -1,3 +1,11 @@
+## [3.2.4](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.3...v3.2.4) (2022-09-06)
+
+
+### Bug Fixes
+
+* **Firefox:** Replace `window.content.fetch` with `content.fetch` ([1a43ae6](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/1a43ae6370897d68fb51ed8df552e8107adfcb16)), closes [#159](https://github.com/bamdadsabbagh/bandcamp-plus--extension/issues/159)
+* **NPM:** Update to latest ([7ab5510](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/7ab55102ef9a83f9a191f80069473a5b26079995))
+
 ## [3.2.3](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.2...v3.2.3) (2022-04-26)
 
 
