@@ -60,11 +60,20 @@ export class TrackController {
 
   private async toggleWishlist(): Promise<boolean> {
     try {
+      let f;
+
+      // @ts-expect-error TS2693
+      if (typeof content !== 'undefined') {
+        // @ts-expect-error TS2693
+        f = content?.fetch;
+      } else {
+        f = fetch;
+      }
+
       const host = window.location.host;
       const endpoint = this.isWishlisted ? 'uncollect_item_cb' : 'collect_item_cb';
       const url = `https://${host}/${endpoint}`;
       const body = this.isWishlisted ? this.meta.uncollect : this.meta.collect;
-      const f = window?.content?.fetch ?? fetch;
 
       const request = await f(
         url,
