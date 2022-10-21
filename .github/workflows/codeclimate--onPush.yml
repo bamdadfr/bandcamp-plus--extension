@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: yarn
-      - uses: paambaati/codeclimate-action@v3.0.0
+      - uses: paambaati/codeclimate-action@v3.2.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
         with:
