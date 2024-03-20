@@ -47,9 +47,7 @@ export class BandcampFacade {
       return this._isTrack;
     }
 
-    this._isTrack = /bandcamp.com\/track\//
-      .exec(window.location.href)
-      !== null;
+    this._isTrack = /bandcamp.com\/track\//.exec(window.location.href) !== null;
 
     return this._isTrack;
   }
@@ -61,9 +59,7 @@ export class BandcampFacade {
       return this._isAlbum;
     }
 
-    this._isAlbum = /bandcamp.com\/album\//
-      .exec(window.location.href)
-      !== null;
+    this._isAlbum = /bandcamp.com\/album\//.exec(window.location.href) !== null;
 
     return this._isAlbum;
   }
@@ -104,7 +100,10 @@ export class BandcampFacade {
   }
 
   public static get isLoggedIn(): boolean {
-    return !document.getElementById('pagedata').getAttribute('data-blob').includes('"fan_tralbum_data":null');
+    return !document
+      .getElementById('pagedata')
+      .getAttribute('data-blob')
+      .includes('"fan_tralbum_data":null');
   }
 
   public static get currentTrackContainer(): HTMLSpanElement {
@@ -116,12 +115,14 @@ export class BandcampFacade {
   }
 
   public static get tracks(): HTMLTableRowElement[] {
-    const tracks = this.trackTable.querySelectorAll('tr');
-    return Array.from(tracks);
+    const tracks = this.trackTable.querySelectorAll('.track_row_view');
+    return Array.from(tracks as NodeListOf<HTMLTableRowElement>);
   }
 
   public static get player(): HTMLDivElement {
-    return document.getElementsByClassName('inline_player')[0] as HTMLDivElement;
+    return document.getElementsByClassName(
+      'inline_player',
+    )[0] as HTMLDivElement;
   }
 
   public static get wishlistButton(): HTMLLIElement {
@@ -131,20 +132,23 @@ export class BandcampFacade {
   public static getTrackInfo(): string {
     let payload = '';
 
-    const artist = document.getElementById('name-section').children[1].children[0] as HTMLSpanElement;
+    const artist = document.getElementById('name-section').children[1]
+      .children[0] as HTMLSpanElement;
     payload += artist.innerText;
 
     if (this.isTrack) {
-      const trackTitle = document.getElementsByClassName('trackTitle')[0] as HTMLTitleElement;
+      const trackTitle = document.getElementsByClassName(
+        'trackTitle',
+      )[0] as HTMLTitleElement;
       payload += ` ${trackTitle.innerText}`;
-      return payload;
+    } else if (this.isAlbum) {
+      const albumTitle = document.getElementsByClassName(
+        'title-section',
+      )[0] as HTMLSpanElement;
+      payload += ` ${albumTitle.innerText}`;
     }
 
-    if (this.isAlbum) {
-      const albumTitle = document.getElementsByClassName('title-section')[0] as HTMLSpanElement;
-      payload += ` ${albumTitle.innerText}`;
-      return payload;
-    }
+    return payload.trim();
   }
 
   public static arrange(): void {
@@ -225,7 +229,8 @@ export class BandcampFacade {
       return;
     }
 
-    const firstPlayButton = firstRow?.children[0]?.children[0]?.children[0] as HTMLDivElement;
+    const firstPlayButton = firstRow?.children[0]?.children[0]
+      ?.children[0] as HTMLDivElement;
 
     if (!firstPlayButton) {
       return;
@@ -262,8 +267,12 @@ export class BandcampFacade {
       tracks.style.marginTop = '1em';
     }
 
-    const prevCell = document.getElementsByClassName('prev_cell')[0] as HTMLTableCellElement;
-    const nextCell = document.getElementsByClassName('next_cell')[0] as HTMLTableCellElement;
+    const prevCell = document.getElementsByClassName(
+      'prev_cell',
+    )[0] as HTMLTableCellElement;
+    const nextCell = document.getElementsByClassName(
+      'next_cell',
+    )[0] as HTMLTableCellElement;
 
     prevCell.style.transform = 'translate(4px)';
     nextCell.style.transform = 'translate(4px)';

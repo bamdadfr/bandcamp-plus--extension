@@ -1,12 +1,10 @@
-name: codeclimate--onPush
-
+---
+name: coverage
 on:
   push:
-    branches:
-      - master
-
+    branches: [master]
 jobs:
-  codeclimate--onPush:
+  coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -15,5 +13,5 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
         with:
-          coverageCommand: yarn test:coverage
+          coverageCommand: pnpm test:coverage
           debug: true

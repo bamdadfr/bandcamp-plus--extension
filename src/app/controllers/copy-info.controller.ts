@@ -10,7 +10,8 @@ export class CopyInfoController {
   }
 
   public static async copy(): Promise<void> {
-    await navigator.clipboard.writeText(BandcampFacade.getTrackInfo());
+    const info = BandcampFacade.getTrackInfo();
+    await navigator.clipboard.writeText(info);
   }
 
   public handleClick(): void {
