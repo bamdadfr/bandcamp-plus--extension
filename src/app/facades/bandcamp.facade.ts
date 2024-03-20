@@ -115,8 +115,8 @@ export class BandcampFacade {
   }
 
   public static get tracks(): HTMLTableRowElement[] {
-    const tracks = this.trackTable.querySelectorAll('tr');
-    return Array.from(tracks);
+    const tracks = this.trackTable.querySelectorAll('.track_row_view');
+    return Array.from(tracks as NodeListOf<HTMLTableRowElement>);
   }
 
   public static get player(): HTMLDivElement {
