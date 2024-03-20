@@ -1,0 +1,36 @@
+{
+  "name": "Bandcamp+",
+  "short_name": "bandcamp-plus",
+  "description": "Add multiple features to bandcamp.com",
+  "version": "3.2.4",
+  "manifest_version": 2,
+  "icons": {
+    "512": "assets/bandcamp-plus-icon.png"
+  },
+  "action": {
+    "default_title": "Bandcamp+",
+    "default_icon": {
+      "512": "assets/bandcamp-plus-icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.bandcamp.com/*"
+      ],
+      "js": [
+        "scripts/content.js"
+      ],
+      "css": [
+        "assets/content.css"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ]
+  }
+}
