@@ -141,16 +141,14 @@ export class BandcampFacade {
         'trackTitle',
       )[0] as HTMLTitleElement;
       payload += ` ${trackTitle.innerText}`;
-      return payload;
-    }
-
-    if (this.isAlbum) {
+    } else if (this.isAlbum) {
       const albumTitle = document.getElementsByClassName(
         'title-section',
       )[0] as HTMLSpanElement;
       payload += ` ${albumTitle.innerText}`;
-      return payload;
     }
+
+    return payload.trim();
   }
 
   public static arrange(): void {
