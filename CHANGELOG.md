@@ -1,3 +1,26 @@
+# [3.3.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.4...v3.3.0) (2024-03-21)
+
+
+### Bug Fixes
+
+* **App:** Add jsdom env for jest ([416a9ed](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/416a9edb2128cc81fda7938bc2347cb7b1bd6023))
+* **App:** Add prettier configuration ([cc6fef2](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/cc6fef2a3af279cdea163b34e336fc87d459df45))
+* **BandcampFacade:** Improve selection of track rows ([bf9ec40](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/bf9ec40d33e3f3c68d63cd2dfe5a69c4914632f8)), closes [#226](https://github.com/bamdadsabbagh/bandcamp-plus--extension/issues/226)
+* **CD:** Update workflows ([3518387](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/35183874b003241d7729237bdf62f17f813930a2))
+* **README:** Update README ([bf37548](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/bf3754896817ae37bdfbf96a0054c0adc1823832))
+* Rename bin folder to build ([d612630](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/d61263045733ab999ba7d3790216247a696241b8))
+* Trim copied text. Fixes [#224](https://github.com/bamdadsabbagh/bandcamp-plus--extension/issues/224) ([bdd7020](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/bdd70207861747d5d837d3993ad7d955dbd7b189))
+
+
+### Features
+
+* **App:** Add manifest v3 for chrome + Misc ([1250cc0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/1250cc0142667d61afb85600eaf909ce9d4adf47))
+
+
+### Performance Improvements
+
+* **App:** Replace yarn with pnpm ([eaedaae](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/eaedaaedc0931a1ee3c96709a40604774b06dbf0))
+
 ## [3.2.4](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.3...v3.2.4) (2022-09-06)
 
 
