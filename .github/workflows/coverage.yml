@@ -8,7 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: yarn
+      - uses: actions/setup-node@master
+        with:
+          node-version: '20'
+      - run: npm install -g pnpm
+      - run: pnpm i
       - uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
