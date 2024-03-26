@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.3.0...v3.3.1) (2024-03-26)
+
+
+### Bug Fixes
+
+* **App:** Migrate to v3 for chrome + Remove background script ([acbd754](https://github.com/bamdadsabbagh/bandcamp-plus--extension/commit/acbd754535818880b6848c60dee8d8e97504da9a))
+
 # [3.3.0](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.2.4...v3.3.0) (2024-03-21)
 
 
