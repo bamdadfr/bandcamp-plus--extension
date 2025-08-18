@@ -1,8 +1,7 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 const path = require('path');
-
-// eslint-disable-next-line no-console
+ 
 console.log('Production mode is: ', isProduction);
 
 module.exports = (env) => {
