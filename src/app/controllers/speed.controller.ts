@@ -1,9 +1,10 @@
-import {SpeedResetButtonView} from '../views/speed-reset-button.view';
 import {AbstractSubject} from '../common/abstract.subject';
+import {State} from '../common/state';
 import {DEFAULT_SPEED, DEFAULT_STRETCH, SPEED_STEP} from '../constants';
 import {BandcampFacade} from '../facades/bandcamp.facade';
-import {SpeedSliderView} from '../views/speed-slider.view';
 import {SpeedLabelsView} from '../views/speed-labels.view';
+import {SpeedResetButtonView} from '../views/speed-reset-button.view';
+import {SpeedSliderView} from '../views/speed-slider.view';
 import {SpeedStretchButtonView} from '../views/speed-stretch-button.view';
 
 export class SpeedController extends AbstractSubject {
@@ -15,12 +16,13 @@ export class SpeedController extends AbstractSubject {
 
   public stretchButton = new SpeedStretchButtonView();
 
-  public speed = DEFAULT_SPEED;
+  public speed: number = DEFAULT_SPEED;
 
   public isStretch: boolean;
 
   constructor() {
     super();
+    State.get().then(({speed}) => this.setSpeed(speed));
     this.resetButton.node.onClick(this.handleButtonClick.bind(this));
 
     this.attach(this.labels);
@@ -99,6 +101,7 @@ export class SpeedController extends AbstractSubject {
 
     this.speed = speed;
     BandcampFacade.setSpeed(this.speed);
+    State.set('speed', this.speed).then();
     this.notify();
   }
 }

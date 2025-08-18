@@ -1,10 +1,10 @@
 import {BandcampFacade} from '../facades/bandcamp.facade';
 import {GridLayout} from '../layouts/grid.layout';
+import {AlbumController} from './album.controller';
+import {CopyInfoController} from './copy-info.controller';
+import {KeyboardController} from './keyboard.controller';
 import {SpeedController} from './speed.controller';
 import {VolumeController} from './volume.controller';
-import {CopyInfoController} from './copy-info.controller';
-import {AlbumController} from './album.controller';
-import {KeyboardController} from './keyboard.controller';
 
 export interface Controllers {
   speed: SpeedController;

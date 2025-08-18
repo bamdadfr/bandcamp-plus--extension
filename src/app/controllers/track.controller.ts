@@ -1,7 +1,7 @@
-import {TrackView} from '../views/track.view';
 import {BandcampTrackParser} from '../common/bandcamp-track-parser';
-import {KeyboardController} from './keyboard.controller';
+import {TrackView} from '../views/track.view';
 import {AlbumController} from './album.controller';
+import {KeyboardController} from './keyboard.controller';
 
 export class TrackController {
   public view: TrackView;
@@ -60,37 +60,34 @@ export class TrackController {
 
   private async toggleWishlist(): Promise<boolean> {
     try {
-      let f;
+      const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
+      // @ts-expect-error: firefox content bound fetch
+      const f = isFirefox ? content.fetch : fetch;
 
-      // @ts-expect-error TS2693
-      if (typeof content !== 'undefined') {
-        // @ts-expect-error TS2693
-        f = content?.fetch;
-      } else {
-        f = fetch;
+      if (typeof f === 'undefined') {
+        // noinspection ExceptionCaughtLocallyJS
+        throw new Error('could not find fetch');
       }
 
       const host = window.location.host;
-      const endpoint = this.isWishlisted ? 'uncollect_item_cb' : 'collect_item_cb';
+      const endpoint = this.isWishlisted
+        ? 'uncollect_item_cb'
+        : 'collect_item_cb';
       const url = `https://${host}/${endpoint}`;
       const body = this.isWishlisted ? this.meta.uncollect : this.meta.collect;
 
-      const request = await f(
-        url,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body,
+      const request = await f(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-      );
+        body,
+      });
 
       const response = await request.json();
 
       return response.ok === true;
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error(error);
       return false;
     }
@@ -174,14 +171,14 @@ export class TrackController {
 
   private validateMeta() {
     if (
-      typeof this.meta.is_wishlisted !== 'undefined'
-      && typeof this.meta.fan_id !== 'undefined'
-      && typeof this.meta.band_id !== 'undefined'
-      && typeof this.meta.item_id !== 'undefined'
-      && typeof this.meta.item_type !== 'undefined'
-      && typeof this.meta.data_referrer_token !== 'undefined'
-      && typeof this.meta.collect !== 'undefined'
-      && typeof this.meta.uncollect !== 'undefined'
+      typeof this.meta.is_wishlisted !== 'undefined' &&
+      typeof this.meta.fan_id !== 'undefined' &&
+      typeof this.meta.band_id !== 'undefined' &&
+      typeof this.meta.item_id !== 'undefined' &&
+      typeof this.meta.item_type !== 'undefined' &&
+      typeof this.meta.data_referrer_token !== 'undefined' &&
+      typeof this.meta.collect !== 'undefined' &&
+      typeof this.meta.uncollect !== 'undefined'
     ) {
       return;
     }
