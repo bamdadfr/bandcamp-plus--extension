@@ -60,7 +60,9 @@ export class TrackController {
 
   private async toggleWishlist(): Promise<boolean> {
     try {
-      const f = fetch || window.fetch;
+      const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
+      // @ts-expect-error: firefox content bound fetch
+      const f = isFirefox ? content.fetch : fetch;
 
       if (typeof f === 'undefined') {
         // noinspection ExceptionCaughtLocallyJS
