@@ -1,3 +1,17 @@
+# [3.4.0](https://github.com/bamdadfr/bandcamp-plus--extension/compare/v3.3.1...v3.4.0) (2025-08-18)
+
+
+### Bug Fixes
+
+* correctly use fetch ([2dc5edf](https://github.com/bamdadfr/bandcamp-plus--extension/commit/2dc5edf6f652154622947ec5f13e05d1e4fa0b74)), closes [#236](https://github.com/bamdadfr/bandcamp-plus--extension/issues/236)
+* improve fetch selection ([f625fdc](https://github.com/bamdadfr/bandcamp-plus--extension/commit/f625fdc633d2763f540be3386117ca57e123e506)), closes [#236](https://github.com/bamdadfr/bandcamp-plus--extension/issues/236)
+* update dependencies ([9d180b0](https://github.com/bamdadfr/bandcamp-plus--extension/commit/9d180b058ff9750c32ce8a3295f0d652e1a0aff2))
+
+
+### Features
+
+* add local storage retention for volume and speed ([1bf1564](https://github.com/bamdadfr/bandcamp-plus--extension/commit/1bf15647b983449b044fac9e41014ee87bd1f9ef)), closes [#233](https://github.com/bamdadfr/bandcamp-plus--extension/issues/233) [#185](https://github.com/bamdadfr/bandcamp-plus--extension/issues/185)
+
 ## [3.3.1](https://github.com/bamdadsabbagh/bandcamp-plus--extension/compare/v3.3.0...v3.3.1) (2024-03-26)
 
 
