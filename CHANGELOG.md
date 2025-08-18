@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/bamdadfr/bandcamp-plus--extension/compare/v3.4.0...v3.4.1) (2025-08-18)
+
+
+### Bug Fixes
+
+* dummy for CI ([4ebd9e6](https://github.com/bamdadfr/bandcamp-plus--extension/commit/4ebd9e61dd819c9691632f5a75e7cb4b12537a5c))
+
 # [3.4.0](https://github.com/bamdadfr/bandcamp-plus--extension/compare/v3.3.1...v3.4.0) (2025-08-18)
 
 
