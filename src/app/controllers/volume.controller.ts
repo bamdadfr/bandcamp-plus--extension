@@ -1,9 +1,10 @@
 import {AbstractSubject} from '../common/abstract.subject';
+import {State} from '../common/state';
+import {DEFAULT_VOLUME, VOLUME_STEP} from '../constants';
+import {BandcampFacade} from '../facades/bandcamp.facade';
+import {VolumeLabelView} from '../views/volume-label.view';
 import {VolumeResetButtonView} from '../views/volume-reset-button.view';
 import {VolumeSliderView} from '../views/volume-slider.view';
-import {VolumeLabelView} from '../views/volume-label.view';
-import {BandcampFacade} from '../facades/bandcamp.facade';
-import {DEFAULT_VOLUME, VOLUME_STEP} from '../constants';
 
 export class VolumeController extends AbstractSubject {
   public button = new VolumeResetButtonView();
@@ -12,10 +13,11 @@ export class VolumeController extends AbstractSubject {
 
   public label = new VolumeLabelView();
 
-  public volume = DEFAULT_VOLUME;
+  public volume: number = DEFAULT_VOLUME;
 
   constructor() {
     super();
+    State.get().then(({volume}) => this.setVolume(volume));
     this.button.node.onClick(this.handleButtonClick.bind(this));
     this.slider.node.onChange(this.handleSliderChange.bind(this));
     this.attach(this.slider);
@@ -67,6 +69,7 @@ export class VolumeController extends AbstractSubject {
 
     this.volume = volume;
     BandcampFacade.setVolume(this.volume);
+    State.set('volume', this.volume).then();
     this.notify();
   }
 }
